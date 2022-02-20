@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatSelectModule } from '@angular/material/select'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatSortModule } from '@angular/material/sort'
 import { MatTableModule } from '@angular/material/table'
@@ -37,6 +38,7 @@ const MAT = [
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatSelectModule,
 ]
 
 @NgModule({
