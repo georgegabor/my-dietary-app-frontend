@@ -1,0 +1,14 @@
+.example-card {
+  min-width: 50%;
+  max-width: 90%;
+  height: fit-content;
+}
+
+.gap {
+  margin: 1%;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

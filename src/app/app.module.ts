@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { DashboardComponent } from './dashboard/dashboard.component'
 import { MaterialModule } from './material/material/material.module'
-import { NavComponent } from './nav/nav.component'
-import { TableComponent } from './table/table.component'
+import { DashboardComponent } from './modules/dashboard/dashboard.component'
+import { FormComponent } from './modules/form/form.component'
+import { NavComponent } from './modules/nav/nav.component'
+import { TableComponent } from './modules/table/table.component'
 
 @NgModule({
   declarations: [
@@ -12,8 +14,9 @@ import { TableComponent } from './table/table.component'
     NavComponent,
     DashboardComponent,
     TableComponent,
+    FormComponent,
   ],
-  imports: [AppRoutingModule, MaterialModule],
+  imports: [AppRoutingModule, MaterialModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
