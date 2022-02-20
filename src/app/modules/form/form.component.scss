@@ -8,7 +8,57 @@
   margin: 1%;
 }
 
+.mat-form-field {
+  padding: 1%;
+}
+
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('../../../assets/tool.jpg');
   background-size: cover;
+}
+
+.mat-card-actions,
+.mat-card-header {
+  background-color: lightslategray;
+  padding: 1%;
+}
+
+.mat-card-content {
+  background-color: darkgray;
+}
+
+.mat-card-footer {
+  background-color: lightgoldenrodyellow;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
 }

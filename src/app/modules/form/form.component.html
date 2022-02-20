@@ -3,24 +3,281 @@
 
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <div class="gap"><hr /></div>
+    <mat-card-title>My Form</mat-card-title>
 
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-subtitle
+      ><p>Form Status: {{ myForm.status }}</p></mat-card-subtitle
+    >
   </mat-card-header>
   <!-- <img
     mat-card-image
     src="https://material.angular.io/assets/img/examples/shiba2.jpg"
     alt="Photo of a Shiba Inu"
   /> -->
+  <div class="gap"><hr /></div>
+
   <mat-card-content>
-    <p>This card has divider and indeterminate progress as footer</p>
-    <p>{{ longText }}</p>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label> Name: </mat-label>
+          <input matInput formControlName="name" placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+          <mat-error
+            *ngIf="
+              myForm.get('name')?.invalid &&
+              (myForm.get('name')?.dirty || myForm.get('name')?.touched)
+            "
+          >
+            Please provide a name.
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="addName()"
+        >
+          Add Name
+        </button>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label> Email: </mat-label>
+          <input matInput formControlName="email" placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+          <mat-error
+            *ngIf="
+              myForm.get('email')?.invalid &&
+              (myForm.get('email')?.dirty || myForm.get('email')?.touched)
+            "
+          >
+            Please provide a valid email address.
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="accent"
+          type="button"
+          (click)="addEmail()"
+        >
+          Add Email
+        </button>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label> Message: </mat-label>
+          <input matInput formControlName="message" placeholder="Placeholder" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+          <mat-error
+            *ngIf="
+              myForm.get('message')?.invalid &&
+              (myForm.get('message')?.dirty || myForm.get('message')?.touched)
+            "
+          >
+            Please provide a message.
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="addMessage()"
+        >
+          Add Message
+        </button>
+      </div>
+
+      <div formGroupName="address">
+        <h2>Address</h2>
+
+        <label for="street">Street: </label>
+        <input id="street" type="text" formControlName="street" />
+
+        <label for="city">City: </label>
+        <input id="city" type="text" formControlName="city" />
+
+        <label for="state">State: </label>
+        <input id="state" type="text" formControlName="state" />
+
+        <label for="zip">Zip Code: </label>
+        <input id="zip" type="text" formControlName="zip" />
+      </div>
+
+      <div formArrayName="aliases">
+        <h2>Aliases</h2>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="addAlias()"
+        >
+          + Add another alias
+        </button>
+
+        <div *ngFor="let alias of aliases.controls; let i = index">
+          <!-- The repeated alias template -->
+          <label for="alias-{{ i }}">Alias:</label>
+          <input id="alias-{{ i }}" type="text" [formControlName]="i" />
+        </div>
+      </div>
+      <div class="gap"></div>
+
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="myForm.invalid"
+      >
+        Send
+      </button>
+    </form>
   </mat-card-content>
   <mat-divider inset> </mat-divider>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-raised-button color="accent" (click)="likeClicked()">
+      LIKE
+    </button>
+    <button mat-raised-button color="primary" (click)="shareClicked()">
+      SHARE
+    </button>
   </mat-card-actions>
-  <mat-card-footer> Footer </mat-card-footer>
+  <mat-card-footer>
+    Footer
+    <mat-divider></mat-divider>
+    <section>
+      <div class="example-label">Icon</div>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <button
+            mat-icon-button
+            aria-label="Example icon button with a vertical three dot icon"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a home icon"
+          >
+            <mat-icon>home</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="accent"
+            aria-label="Example icon button with a menu icon"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            disabled
+            aria-label="Example icon button with a open in new tab icon"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+      </div>
+    </section>
+    <mat-divider></mat-divider>
+    <section>
+      <div class="example-label">FAB</div>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button
+              mat-fab
+              color="primary"
+              aria-label="Example icon button with a delete icon"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-fab
+              color="accent"
+              aria-label="Example icon button with a bookmark icon"
+            >
+              <mat-icon>bookmark</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-fab
+              color="warn"
+              aria-label="Example icon button with a home icon"
+            >
+              <mat-icon>home</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-fab
+              disabled
+              aria-label="Example icon button with a heart icon"
+            >
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <mat-divider></mat-divider>
+    <section>
+      <div class="example-label">Mini FAB</div>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button
+              mat-mini-fab
+              color="primary"
+              aria-label="Example icon button with a menu icon"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-mini-fab
+              color="accent"
+              aria-label="Example icon button with a plus one icon"
+            >
+              <mat-icon>plus_one</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-mini-fab
+              color="warn"
+              aria-label="Example icon button with a filter list icon"
+            >
+              <mat-icon>filter_list</mat-icon>
+            </button>
+          </div>
+          <div class="example-button-container">
+            <button
+              mat-mini-fab
+              disabled
+              aria-label="Example icon button with a home icon"
+            >
+              <mat-icon>home</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </mat-card-footer>
 </mat-card>
