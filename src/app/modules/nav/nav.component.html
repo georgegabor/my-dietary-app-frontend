@@ -1,32 +1,49 @@
 <header>
   <mat-toolbar color="primary">
-    <button
-      type="button"
-      aria-label="Toggle sidenav"
-      mat-icon-button
-      (click)="drawer.toggle()"
-      *ngIf="isHandset$ | async"
-    >
-      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button>
-    <span>my-practice-app</span>
+    <mat-toolbar-row>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        matTooltip="{{ sidenav.opened ? 'Close Sidebar' : 'Opwn Sidebar' }}"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <div fxFlex fxLayout fxLayoutAlign="center">
+        <h3>App</h3>
+      </div>
+
+      <div fxLayoutAlign="start center">
+        <div fxLayout fxLayoutGap="20px">
+          <button mat-icon-button>
+            <mat-icon matTooltip="Home"> home </mat-icon>
+          </button>
+        </div>
+
+        <div fxLayout fxLayoutGap="20px">
+          <button mat-icon-button>
+            <mat-icon matTooltip="User"> face </mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar-row>
   </mat-toolbar>
 </header>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
+  <mat-sidenav mode="side" opened role="navigation" #sidenav>
     <mat-nav-list>
-      <a mat-list-item routerLink="./dashboard">Dashboard</a>
-      <a mat-list-item routerLink="./table">Table</a>
-      <a mat-list-item routerLink="./form">Form</a>
+      <mat-list-item routerLink="./dashboard" routerLinkActive="active"
+        >Dashboard</mat-list-item
+      >
+      <mat-list-item routerLink="./table" routerLinkActive="active"
+        >Table</mat-list-item
+      >
+      <mat-list-item routerLink="./form" routerLinkActive="active"
+        >Form</mat-list-item
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
