@@ -113,6 +113,8 @@
         </mat-form-field>
       </div>
 
+      <div class="gap"><hr /></div>
+
       <div formGroupName="address">
         <h2>Address</h2>
 
@@ -137,7 +139,42 @@
         </mat-form-field>
       </div>
 
-      <div formArrayName="aliases">
+      <div class="gap"><hr /></div>
+
+      <ng-container formArrayName="aliases">
+        <h2>Ingredients</h2>
+        <ng-container
+          *ngFor="let lessonForm of aliases.controls; let i = index"
+        >
+          <div [formGroupName]="i">
+            <mat-form-field appearance="fill">
+              <mat-select formControlName="ingredient" placeholder="ingredient">
+                <mat-option *ngFor="let ing of ingredients" [value]="ing">
+                  {{ ing.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <input matInput formControlName="amount" placeholder="amount" />
+              <span matSuffix>g</span>
+            </mat-form-field>
+            <mat-icon class="delete-btn" (click)="deleteAlias(i)">
+              delete_forever</mat-icon
+            >
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <div class="example-flex-container">
+        <div style="margin: 1%; padding: 1%">
+          <h3>Sum of CarboHydrates: {{ carboValue$ | async }}</h3>
+        </div>
+
+        <button mat-fab color="primary" type="button" (click)="addAlias()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <!-- <div formArrayName="aliases">
         <h2>Aliases</h2>
         <button
           mat-raised-button
@@ -158,8 +195,8 @@
             </mat-select>
           </mat-form-field>
         </div>
-      </div>
-      <div class="gap"></div>
+      </div> -->
+      <div class="gap"><hr /></div>
 
       <button
         mat-raised-button
