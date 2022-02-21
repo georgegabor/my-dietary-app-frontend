@@ -1,6 +1,6 @@
 .example-card {
   min-width: 50%;
-  max-width: 90%;
+  max-width: 100%;
   height: fit-content;
 }
 
@@ -29,13 +29,13 @@ h2 {
 
 .mat-card-actions,
 .mat-card-header {
-  background-color: lightslategray;
+  background-color: rgb(202, 209, 216);
   padding: 1%;
 }
 
-.mat-card-content {
-  background-color: gainsboro;
-}
+// .mat-card-content {
+//   background-color: rgb(213, 221, 228);
+// }
 
 .mat-card-footer {
   background-color: lightgoldenrodyellow;

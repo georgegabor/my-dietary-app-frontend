@@ -1,6 +1,4 @@
 <mat-card class="example-card" tabindex="0">
-  <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
-
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>My Form</mat-card-title>
@@ -8,129 +6,29 @@
     <mat-card-subtitle
       ><p>Form Status: {{ myForm.status }}</p></mat-card-subtitle
     >
+
+    <div fxFlex fxLayout fxLayoutAlign="center">
+      <h3>{{ date | date: 'fullDate' }}</h3>
+    </div>
   </mat-card-header>
-  <!-- <img
-    mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
-  /> -->
+
   <div class="gap"><hr /></div>
 
   <mat-card-content>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
       <div>
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> <b> Name: </b> </mat-label>
-          <input matInput formControlName="name" placeholder="Placeholder" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-          <mat-error
-            *ngIf="
-              myForm.get('name')?.invalid &&
-              (myForm.get('name')?.dirty || myForm.get('name')?.touched)
-            "
-          >
-            Please provide a name.
-          </mat-error>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          (click)="addName()"
-        >
-          Add Name
-        </button>
-      </div>
-
-      <div>
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> <b> Email: </b> </mat-label>
-          <input matInput formControlName="email" placeholder="Placeholder" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-          <mat-error
-            *ngIf="
-              myForm.get('email')?.invalid &&
-              (myForm.get('email')?.dirty || myForm.get('email')?.touched)
-            "
-          >
-            Please provide a valid email address.
-          </mat-error>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="accent"
-          type="button"
-          (click)="addEmail()"
-        >
-          Add Email
-        </button>
-      </div>
-
-      <div>
-        <mat-form-field
-          hintLabel="Min 10 characters"
-          appearance="outline"
-          [color]="'primary'"
-        >
-          <mat-label> <b> Message: </b> </mat-label>
-          <textarea
-            matInput
-            #message
-            formControlName="message"
-            placeholder="Placeholder"
-          ></textarea>
-          <mat-hint align="end">{{ message.value?.length || 0 }}/10</mat-hint>
-          <mat-error
-            *ngIf="
-              myForm.get('message')?.invalid &&
-              (myForm.get('message')?.dirty || myForm.get('message')?.touched)
-            "
-          >
-            Please provide a message.
-          </mat-error>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          (click)="addMessage()"
-        >
-          Add Message
-        </button>
-      </div>
-
-      <div class="gap"><hr /></div>
-
-      <div formGroupName="address">
-        <h2>Address</h2>
-
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> Street: </mat-label>
-          <input matInput formControlName="street" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> City: </mat-label>
-          <input matInput formControlName="city" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> State: </mat-label>
-          <input matInput formControlName="state" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label> Zip Code: </mat-label>
-          <input matInput formControlName="zip" />
+        <mat-form-field appearance="outline">
+          <mat-label>Choose meal type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="breakfast">Breakfast</mat-option>
+            <mat-option value="lunch">Lunch</mat-option>
+            <mat-option value="dinner">Dinner</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
-
-      <div class="gap"><hr /></div>
 
       <ng-container formArrayName="aliases">
-        <h2>Ingredients</h2>
+        <h2>Food</h2>
         <ng-container
           *ngFor="let lessonForm of aliases.controls; let i = index"
         >
@@ -169,28 +67,6 @@
           </button>
         </div>
       </div>
-      <!-- <div formArrayName="aliases">
-        <h2>Aliases</h2>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          (click)="addAlias()"
-        >
-          + Add another alias
-        </button>
-
-        <div *ngFor="let alias of aliases.controls; let i = index">
-          <mat-form-field appearance="outline" [color]="'primary'">
-            <mat-label>Alias:</mat-label>
-            <mat-select [formControlName]="i">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-              <mat-option value="option3">Option 3</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div> -->
       <div class="gap"><hr /></div>
 
       <button

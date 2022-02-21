@@ -10,6 +10,8 @@ import { BehaviorSubject } from 'rxjs'
 export class FormComponent implements OnInit {
   carboValue$ = new BehaviorSubject<number>(0)
 
+  date = new Date()
+
   myForm: FormGroup
   lessonForm = this.fb.group({
     ingredient: '',
@@ -30,15 +32,7 @@ export class FormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.myForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
-      address: this.fb.group({
-        street: [''],
-        city: [''],
-        state: [''],
-        zip: [''],
-      }),
+      type: ['', Validators.required],
       aliases: this.fb.array([]),
     })
   }
@@ -62,25 +56,8 @@ export class FormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     console.log('onSubmit')
-    console.log('Valid?', form.valid) // true or false
-    console.log('Name', form.value.name)
-    console.log('Email', form.value.email)
-    console.log('Message', form.value.message)
-    console.log('Team', form.value.team)
-    console.log('Address', form.value.address)
+    console.log('type', form.value.type)
     console.log('Aliases', form.value.aliases)
-  }
-
-  addName() {
-    this.myForm.get('name')?.setValue('Sammy')
-  }
-
-  addEmail() {
-    this.myForm.get('email')?.setValue('sammy@email.com')
-  }
-
-  addMessage() {
-    this.myForm.get('message')?.setValue('Sammy has a long message for you')
   }
 
   likeClicked() {

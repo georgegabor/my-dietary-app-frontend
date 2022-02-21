@@ -7,6 +7,7 @@ import { MaterialModule } from './material/material/material.module'
 import { DashboardComponent } from './modules/dashboard/dashboard.component'
 import { FormComponent } from './modules/form/form.component'
 import { Form2Component } from './modules/form2/form2.component'
+import { Form3Component } from './modules/form3/form3.component'
 import { NavComponent } from './modules/nav/nav.component'
 import { TableComponent } from './modules/table/table.component'
 
@@ -18,6 +19,7 @@ import { TableComponent } from './modules/table/table.component'
     TableComponent,
     FormComponent,
     Form2Component,
+    Form3Component,
   ],
   imports: [
     AppRoutingModule,
