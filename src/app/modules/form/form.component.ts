@@ -1,3 +1,4 @@
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
 import { Component, OnInit } from '@angular/core'
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { BehaviorSubject } from 'rxjs'
@@ -6,8 +7,17 @@ import { BehaviorSubject } from 'rxjs'
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true },
+    },
+  ],
 })
 export class FormComponent implements OnInit {
+  firstFormGroup: FormGroup
+  secondFormGroup: FormGroup
+
   carboValue$ = new BehaviorSubject<number>(0)
 
   date = new Date()
@@ -34,6 +44,12 @@ export class FormComponent implements OnInit {
     this.myForm = this.fb.group({
       type: ['', Validators.required],
       aliases: this.fb.array([]),
+    })
+    this.firstFormGroup = this.fb.group({
+      firstCtrl: ['', Validators.required],
+    })
+    this.secondFormGroup = this.fb.group({
+      secondCtrl: ['', Validators.required],
     })
   }
 
