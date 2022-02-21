@@ -146,9 +146,9 @@
         <ng-container
           *ngFor="let lessonForm of aliases.controls; let i = index"
         >
-          <div [formGroupName]="i">
+          <div [formGroupName]="i" class="ing">
             <mat-form-field appearance="fill">
-              <mat-select formControlName="ingredient" placeholder="ingredient">
+              <mat-select formControlName="ingredient" placeholder="Ingredient">
                 <mat-option *ngFor="let ing of ingredients" [value]="ing">
                   {{ ing.name }}
                 </mat-option>
@@ -165,14 +165,21 @@
         </ng-container>
       </ng-container>
 
-      <div class="example-flex-container">
-        <div style="margin: 1%; padding: 1%">
+      <div>
+        <div class="ing">
           <h3>Sum of CarboHydrates: {{ carboValue$ | async }}</h3>
         </div>
 
-        <button mat-fab color="primary" type="button" (click)="addAlias()">
-          <mat-icon>add</mat-icon>
-        </button>
+        <div class="ing">
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="addAlias()"
+          >
+            + Add Ingredient
+          </button>
+        </div>
       </div>
       <!-- <div formArrayName="aliases">
         <h2>Aliases</h2>

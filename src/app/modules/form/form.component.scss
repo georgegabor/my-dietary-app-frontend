@@ -5,8 +5,8 @@
 }
 
 h2 {
-  margin: 1%;
-  padding: 1%;
+  margin: 0.3%;
+  padding: 0.3%;
 }
 
 .gap {
@@ -14,7 +14,8 @@ h2 {
 }
 
 .mat-form-field {
-  padding: 0.5%;
+  margin: 0.5% !important;
+  padding: 0.5% !important;
 }
 
 // .mat-select {
@@ -70,4 +71,9 @@ section {
   display: flex;
   justify-content: center;
   width: 120px;
+}
+
+.ing {
+  margin: 0.2%;
+  padding: 0.2%;
 }

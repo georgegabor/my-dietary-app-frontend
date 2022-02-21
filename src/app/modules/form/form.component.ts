@@ -20,6 +20,12 @@ export class FormComponent implements OnInit {
     { name: 'Bulgur', carbo: 20 },
     { name: 'Potato', carbo: 17 },
     { name: 'Rice', carbo: 20 },
+    { name: 'Falafel', carbo: 23 },
+    { name: 'Steamed Vegetables', carbo: 10 },
+    { name: 'Protein', carbo: 1.5 },
+    { name: 'Actimel Zero', carbo: 3.6 },
+    { name: 'Smoothie', carbo: 11.0 },
+    { name: 'Mixed Frozen Fruit', carbo: 10.0 },
   ]
 
   teams: any[] = [
