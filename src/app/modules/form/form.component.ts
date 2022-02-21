@@ -28,22 +28,11 @@ export class FormComponent implements OnInit {
     { name: 'Mixed Frozen Fruit', carbo: 10.0 },
   ]
 
-  teams: any[] = [
-    { name: 'Liverpool' },
-    { name: 'Manchester City' },
-    { name: 'Manchester United' },
-    { name: 'Arsenal' },
-    { name: 'Leicester City' },
-    { name: 'Chelsea' },
-    { name: 'Tottenham Hotspur' },
-  ]
-
   constructor(private fb: FormBuilder) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(10)]],
-      team: [''],
       address: this.fb.group({
         street: [''],
         city: [''],

@@ -101,18 +101,6 @@
         </button>
       </div>
 
-      <div>
-        <mat-form-field appearance="outline" [color]="'primary'">
-          <mat-label><b> Select a Team </b> </mat-label>
-          <mat-select formControlName="team">
-            <mat-option *ngFor="let team of teams" [value]="team.name">
-              {{ team.name }}
-            </mat-option>
-          </mat-select>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-      </div>
-
       <div class="gap"><hr /></div>
 
       <div formGroupName="address">
