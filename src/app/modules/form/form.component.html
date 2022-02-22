@@ -15,7 +15,7 @@
   <div class="gap"><hr /></div>
 
   <mat-card-content>
-    <!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Choose meal type</mat-label>
@@ -77,20 +77,20 @@
       >
         Send
       </button>
-    </form> -->
+    </form>
+    -
 
     <mat-stepper #stepper>
       <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
         <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Fill out your name</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input
-              matInput
-              placeholder="Last name, First name"
-              formControlName="firstCtrl"
-              required
-            />
+          <ng-template matStepLabel>Fill out the type</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Choose meal type</mat-label>
+            <mat-select formControlName="type">
+              <mat-option value="breakfast">Breakfast</mat-option>
+              <mat-option value="lunch">Lunch</mat-option>
+              <mat-option value="dinner">Dinner</mat-option>
+            </mat-select>
           </mat-form-field>
           <div>
             <p>Go to a different step to see the error state</p>
@@ -130,6 +130,7 @@
       </mat-step>
     </mat-stepper>
   </mat-card-content>
+
   <mat-divider inset> </mat-divider>
   <mat-card-actions>
     <button mat-raised-button color="accent" (click)="likeClicked()">
