@@ -27,6 +27,8 @@
         </mat-form-field>
       </div>
 
+      <div class="gap"><hr /></div>
+
       <ng-container formArrayName="aliases">
         <h2>Food</h2>
         <ng-container
@@ -78,57 +80,6 @@
         Send
       </button>
     </form>
-    -
-
-    <mat-stepper #stepper>
-      <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Fill out the type</ng-template>
-          <mat-form-field appearance="outline">
-            <mat-label>Choose meal type</mat-label>
-            <mat-select formControlName="type">
-              <mat-option value="breakfast">Breakfast</mat-option>
-              <mat-option value="lunch">Lunch</mat-option>
-              <mat-option value="dinner">Dinner</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div>
-            <p>Go to a different step to see the error state</p>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step
-        [stepControl]="secondFormGroup"
-        errorMessage="Address is required."
-      >
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Fill out your address</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input
-              matInput
-              placeholder="Ex. 1 Main St, New York, NY"
-              formControlName="secondCtrl"
-              required
-            />
-          </mat-form-field>
-          <div>
-            <p>Go to a different step to see the error state</p>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </mat-step>
-    </mat-stepper>
   </mat-card-content>
 
   <mat-divider inset> </mat-divider>

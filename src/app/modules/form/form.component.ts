@@ -15,9 +15,6 @@ import { BehaviorSubject } from 'rxjs'
   ],
 })
 export class FormComponent implements OnInit {
-  firstFormGroup: FormGroup
-  secondFormGroup: FormGroup
-
   carboValue$ = new BehaviorSubject<number>(0)
 
   date = new Date()
@@ -45,23 +42,15 @@ export class FormComponent implements OnInit {
       type: ['', Validators.required],
       aliases: this.fb.array([]),
     })
-    this.firstFormGroup = this.fb.group({
-      firstCtrl: ['', Validators.required],
-    })
-    this.secondFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required],
-    })
   }
 
   ngOnInit() {
     this.myForm.get('aliases')?.valueChanges.subscribe((x) => {
       console.log('valueChanges: ' + JSON.stringify(x))
       let v = this.myForm.get('aliases')?.value
-      console.log('v: ' + JSON.stringify(v))
       let am = 0
+
       for (var i of v) {
-        console.log('i.ingredient?.carbo: ' + i.ingredient?.carbo)
-        console.log('i?.amount: ' + i?.amount)
         if (i.ingredient?.carbo !== undefined && i?.amount !== null) {
           am += i.ingredient?.carbo * (i?.amount / 100)
         }
