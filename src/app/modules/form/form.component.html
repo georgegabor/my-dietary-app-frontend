@@ -43,7 +43,12 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <input matInput formControlName="amount" placeholder="amount" />
+              <input
+                type="number"
+                matInput
+                formControlName="amount"
+                placeholder="amount"
+              />
               <span matSuffix>g</span>
             </mat-form-field>
             <mat-icon class="delete-btn" (click)="deleteAlias(i)">
@@ -55,7 +60,9 @@
 
       <div>
         <div class="ing">
-          <h3>Sum of CarboHydrates: {{ carboValue$ | async }}</h3>
+          <h3>
+            Sum of Carbohydrates: {{ carboValue$ | async | number: '1.2-2' }}
+          </h3>
         </div>
 
         <div class="ing">

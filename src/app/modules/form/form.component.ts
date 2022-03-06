@@ -35,6 +35,7 @@ export class FormComponent implements OnInit {
     { name: 'Actimel Zero', carbo: 3.6 },
     { name: 'Smoothie', carbo: 11.0 },
     { name: 'Mixed Frozen Fruit', carbo: 10.0 },
+    { name: 'Falafel', carbo: 23.0 },
   ]
 
   constructor(private fb: FormBuilder) {
