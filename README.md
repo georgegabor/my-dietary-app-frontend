@@ -1,1 +1,1 @@
-# rxjs-practice
+# my-dietary-app
