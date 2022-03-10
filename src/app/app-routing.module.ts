@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-import { DashboardComponent } from './modules/dashboard/dashboard.component'
-import { FormComponent } from './modules/form/form.component'
-import { Form2Component } from './modules/form2/form2.component'
-import { NavComponent } from './modules/nav/nav.component'
-import { TableComponent } from './modules/table/table.component'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { FoodListComponent } from './modules/food/food-list/food-list.component';
+import { FormComponent } from './modules/form/form.component';
+import { TableComponent } from './modules/table/table.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/nav', pathMatch: 'full' },
@@ -15,10 +15,10 @@ const routes: Routes = [
       { path: 'table', component: TableComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'events', component: FormComponent },
-      { path: 'ingredients', component: Form2Component },
+      { path: 'food', component: FoodListComponent },
     ],
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
