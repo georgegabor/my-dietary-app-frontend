@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FoodService } from './../service/food.service';
 
 @Component({
   selector: 'app-food-form',
@@ -10,7 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FoodFormComponent implements OnInit {
   foodForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private readonly foodService: FoodService
+  ) {
     this.foodForm = this.fb.group({
       name: ['', Validators.required],
       energyInKcal: ['', [Validators.required, Validators.min(0)]],
@@ -26,7 +30,7 @@ export class FoodFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: FormGroup) {
-    console.log('form: ', form.value);
+    this.foodService.create(form.value);
   }
 
   getErrorMessage(controlName: string): string {

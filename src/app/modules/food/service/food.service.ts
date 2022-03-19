@@ -12,4 +12,8 @@ export class FoodService {
   constructor(private readonly http: HttpClient) {}
 
   foodList$: Observable<Food[]> = this.http.get<Food[]>(FOOD_URL);
+
+  create(food: Food) {
+    this.http.post<Food>(FOOD_URL, food).subscribe();
+  }
 }
