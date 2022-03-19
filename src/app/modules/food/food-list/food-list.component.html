@@ -12,36 +12,66 @@
     matSortDirection="asc"
     matSortDisableClear
   >
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Position
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.position }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> Position Footer </mat-footer-cell>
-    </ng-container>
-
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Name
+        NAME
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> Name Footer </mat-footer-cell>
     </ng-container>
 
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef="energyInKcal">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Weight
+        ENERGY IN KCAL
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.weight }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> Weight Footer </mat-footer-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.energyInKcal }}
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="symbol" justify="end">
+    <ng-container matColumnDef="totalFat">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Symbol
+        TOTAL FAT
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.symbol }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> Symbol Footer </mat-footer-cell>
+      <mat-cell *matCellDef="let element"> {{ element.totalFat }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="saturatedFat">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        SATURATED FAT
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.saturatedFat }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalCarbohydrate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        TOTAL CARBOHYDRATE
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.totalCarbohydrate }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sugar">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        SUGAR
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.sugar }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="protein">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        PROTEIN
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.protein }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="salt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        SALT
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.salt }} </mat-cell>
     </ng-container>
 
     <mat-header-row
