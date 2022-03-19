@@ -1,3 +1,107 @@
-<p>
-  food-form works!
-</p>
+<mat-card class="example-card" tabindex="0">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>My Form</mat-card-title>
+
+    <mat-card-subtitle><p>subtitle</p></mat-card-subtitle>
+  </mat-card-header>
+
+  <div class="gap"><hr /></div>
+
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit(foodForm)" [formGroup]="foodForm">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name of Food</mat-label>
+          <input type="text" matInput formControlName="name" />
+          <mat-error> {{ getErrorMessage('name') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Energy In Kcal</mat-label>
+          <input type="number" matInput formControlName="energyInKcal" />
+          <span matSuffix>Kcal</span>
+          <mat-error> {{ getErrorMessage('energyInKcal') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Total Fat</mat-label>
+          <input type="number" matInput formControlName="totalFat" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('totalFat') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Saturated Fat</mat-label>
+          <input type="number" matInput formControlName="saturatedFat" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('saturatedFat') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Total Carbohydrate</mat-label>
+          <input type="number" matInput formControlName="totalCarbohydrate" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('totalCarbohydrate') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Sugar</mat-label>
+          <input type="number" matInput formControlName="sugar" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('sugar') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Protein</mat-label>
+          <input type="number" matInput formControlName="protein" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('protein') }} </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Salt</mat-label>
+          <input type="number" matInput formControlName="salt" />
+          <span matSuffix>g</span>
+          <mat-error> {{ getErrorMessage('salt') }} </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="gap"><hr /></div>
+
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="foodForm.invalid"
+      >
+        SUBMIT
+      </button>
+    </form>
+  </mat-card-content>
+
+  <mat-divider inset> </mat-divider>
+  <mat-card-actions> actions </mat-card-actions>
+  <mat-card-footer>
+    Footer
+    <mat-divider></mat-divider>
+    <section>section</section>
+    <mat-divider></mat-divider>
+    <section>section</section>
+    <mat-divider></mat-divider>
+    <section>section</section>
+  </mat-card-footer>
+</mat-card>

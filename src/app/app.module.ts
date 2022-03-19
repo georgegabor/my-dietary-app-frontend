@@ -1,7 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material/material.module';
@@ -23,14 +21,7 @@ import { NavComponent } from './nav/nav.component';
     Form2Component,
     Form3Component,
   ],
-  imports: [
-    HttpClientModule,
-    AppRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    FoodModule,
-  ],
+  imports: [HttpClientModule, AppRoutingModule, MaterialModule, FoodModule],
   providers: [],
   bootstrap: [AppComponent],
 })
