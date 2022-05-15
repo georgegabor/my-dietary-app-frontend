@@ -1,5 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material/material.module';
@@ -21,7 +24,15 @@ import { NavComponent } from './nav/nav.component';
     Form2Component,
     Form3Component,
   ],
-  imports: [HttpClientModule, AppRoutingModule, MaterialModule, FoodModule],
+  imports: [
+    HttpClientModule,
+    AppRoutingModule,
+    MaterialModule,
+    FoodModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

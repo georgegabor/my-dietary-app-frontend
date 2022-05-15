@@ -47,6 +47,7 @@ const MAT = [
   MatStepperModule,
   ReactiveFormsModule,
   FlexLayoutModule,
+  MatFormFieldModule,
 ];
 
 @NgModule({
