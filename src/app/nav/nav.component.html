@@ -1,13 +1,8 @@
 <header>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        matTooltip="{{ sidenav.opened ? 'Close Sidebar' : 'Opwn Sidebar' }}"
-        (click)="sidenav.toggle()"
-      >
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button
+        matTooltip="{{ sidenav.opened ? 'Close Sidebar' : 'Opwn Sidebar' }}" (click)="sidenav.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
@@ -35,19 +30,13 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened role="navigation" #sidenav>
     <mat-nav-list>
-      <mat-list-item routerLink="./dashboard" routerLinkActive="active"
-        >Dashboard</mat-list-item
-      >
+      <mat-list-item routerLink="./dashboard" routerLinkActive="active">Dashboard</mat-list-item>
 
-      <mat-list-item routerLink="./events" routerLinkActive="active"
-        >Event</mat-list-item
-      >
-      <mat-list-item routerLink="./food" routerLinkActive="active"
-        >Food</mat-list-item
-      >
-      <mat-list-item routerLink="./table" routerLinkActive="active"
-        >Table</mat-list-item
-      >
+      <mat-list-item routerLink="./events" routerLinkActive="active">Event</mat-list-item>
+      <mat-list-item routerLink="./food" routerLinkActive="active">Food</mat-list-item>
+      <mat-list-item routerLink="./table" routerLinkActive="active">Table</mat-list-item>
+      <mat-list-item routerLink="./playground" routerLinkActive="active">Playground</mat-list-item>
+      <mat-list-item routerLink="./facade" routerLinkActive="active">Facade</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

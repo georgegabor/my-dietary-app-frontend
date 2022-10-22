@@ -1,11 +1,11 @@
-<div><button (click)="addNewUser()">Add</button></div>
-<div><button (click)="removeFirst()">Remove First</button></div>
-<div><button (click)="updateUser()">Update First</button></div>
-
-<div>
-  <button (click)="changeSearchCriteria()">changeSearchCriteria</button>
+<div class="button-row">
+  <button mat-raised-button color="primary" (click)="userFacadeService.addNewUser()">Add</button>
+  <button mat-raised-button color="primary" (click)="userFacadeService.removeFirst()">Remove First</button>
+  <button mat-raised-button color="primary" (click)="userFacadeService.updateUser()">Update First</button>
+  <button mat-raised-button color="primary" (click)="changeSearchCriteria()">Change Search Criteria</button>
+  <button mat-raised-button color="primary" (click)="changePagination()">Change Pagination</button>
 </div>
-<div><button (click)="changePagination()">changePagination</button></div>
+
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
@@ -48,8 +48,6 @@
     </tr>
   </table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page of users"
-  ></mat-paginator>
+  <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5, 10, 15]">
+  </mat-paginator>
 </div>
