@@ -16,21 +16,24 @@
   <!-- <mat-card-subtitle>subtitle</mat-card-subtitle> -->
   <mat-card-content>
     <!-- <p>This card indeterminates progress bar.</p> -->
-      <ng-container *ngIf="{
+    <!-- <ng-container *ngIf="{
         obs1: store$ | async,
         obs2: all$ | async
-      } as observables">
-        <h1> Button clicked => {{ observables.obs1?.button | uppercase}}
-        </h1>
+      } as observables"> -->
+    <ng-container *ngIf="counterState$ | async as store">
 
-        <h1>
-          No. Of clicks => {{ observables.obs1?.clickCounter }}
-        </h1>
+      <h1>
+        Button clicked => {{ store.button | uppercase}}
+      </h1>
 
-        <h1>
-          Buttons clicked => {{ observables.obs1?.prevClicks }}
-        </h1>
-      </ng-container>
+      <h1>
+        No. Of clicks => {{ store.clickCounter }}
+      </h1>
+
+      <h1>
+        Buttons clicked => {{ store.prevClicks }}
+      </h1>
+    </ng-container>
   </mat-card-content>
   <!-- <mat-card-actions>
     <button mat-button>LIKE</button>

@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, mapTo, merge, scan, Subject, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { combineLatest, mapTo, merge, Observable, scan, Subject } from 'rxjs';
+import { startWith, tap } from 'rxjs/operators';
 
 export interface UserState {
   clickCounter: number;
@@ -8,7 +8,7 @@ export interface UserState {
   prevClicks: string;
 }
 
-let _state: UserState = {
+let initialState: UserState = {
   clickCounter: 0,
   button: '',
   prevClicks: '',
@@ -19,10 +19,7 @@ let _state: UserState = {
   templateUrl: './playground.component.html',
   styleUrls: ['./playground.component.scss'],
 })
-export class PlaygroundComponent implements OnInit, OnDestroy {
-  store$ = new BehaviorSubject<UserState>(_state);
-  _subscription = new Subscription();
-
+export class PlaygroundComponent {
   a$ = new Subject<void>();
   b$ = new Subject<void>();
   c$ = new Subject<void>();
@@ -47,25 +44,10 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
 
   counter$ = this.clicks$.pipe(scan((acc) => (acc += 1), 0));
   prevClick$ = this.clicks$.pipe(scan((acc, curr) => curr.button + acc, ''));
-
-  all$ = combineLatest([this.clicks$, this.counter$, this.prevClick$]).pipe(
-    map(([clicks, counters, prevClicks]) => {
-      this.store$.next({
-        ..._state,
-        button: clicks.button,
-        clickCounter: counters,
-        prevClicks: prevClicks,
-      });
-    })
-  );
-
-  constructor() {}
-
-  ngOnInit() {
-    // this._subscription = this.all$.subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this._subscription.unsubscribe();
-  }
+  counterState$: Observable<UserState> = combineLatest(
+    [this.clicks$, this.counter$, this.prevClick$],
+    (clicks, counter, prevClick) => {
+      return { button: clicks.button, clickCounter: counter, prevClicks: prevClick };
+    }
+  ).pipe(startWith(initialState), tap(console.log));
 }
