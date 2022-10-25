@@ -1,9 +1,8 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Todo } from '../../models/todo';
 
 const INITIAL_ID = 1;
 
-export class TodosData implements InMemoryDbService {
+export class TodosData {
   createDb() {
     const todos: Todo[] = [
       {

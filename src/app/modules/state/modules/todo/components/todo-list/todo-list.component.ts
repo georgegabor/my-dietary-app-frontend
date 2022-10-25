@@ -5,10 +5,9 @@ import { Todo } from '../../models/todo';
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListComponent implements OnInit {
-
   @Input()
   todos: Todo[];
 
@@ -18,9 +17,7 @@ export class TodoListComponent implements OnInit {
   @Output()
   selectTodo: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

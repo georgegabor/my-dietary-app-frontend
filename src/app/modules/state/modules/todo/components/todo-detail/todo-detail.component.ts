@@ -7,7 +7,7 @@ import { TodosStateService } from '../../services/todos-state.service';
   selector: 'app-todo-detail',
   templateUrl: './todo-detail.component.html',
   styleUrls: ['./todo-detail.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoDetailComponent implements OnInit {
   @Input()

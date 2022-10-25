@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { StateService } from '../../../shared/state.service';
-import { Todo } from '../models/todo';
-import { Filter } from '../models/filter';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { StateService } from '../../../shared/state.service';
+import { Filter } from '../models/filter';
+import { Todo } from '../models/todo';
 import { TodosApiService } from './api/todos-api.service';
 
 interface TodoState {
@@ -31,13 +31,10 @@ export class TodosStateService extends StateService<TodoState> {
   private todosFiltered$: Observable<Todo[]> = this.select((state) => {
     return getTodosFiltered(state.todos, state.filter);
   });
-  todosDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
-    map((todos) => todos.filter((todo) => todo.isDone))
-  );
-  todosNotDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
-    map((todos) => todos.filter((todo) => !todo.isDone))
-  );
+  todosDone$: Observable<Todo[]> = this.todosFiltered$.pipe(map((todos) => todos.filter((todo) => todo.isDone)));
+  todosNotDone$: Observable<Todo[]> = this.todosFiltered$.pipe(map((todos) => todos.filter((todo) => !todo.isDone)));
   filter$: Observable<Filter> = this.select((state) => state.filter);
+
   selectedTodo$: Observable<Todo> = this.select((state) => {
     if (state.selectedTodoId === 0) {
       return new Todo();
@@ -107,8 +104,8 @@ export class TodosStateService extends StateService<TodoState> {
   }
 }
 
-function getTodosFiltered(todos, filter): Todo[] {
-  return todos.filter((item) => {
+function getTodosFiltered(todos: any[], filter: Filter): Todo[] {
+  return todos.filter((item: { title: string; isBusiness: any; isPrivate: any }) => {
     return (
       item.title.toUpperCase().indexOf(filter.search.toUpperCase()) > -1 &&
       (filter.category.isBusiness ? item.isBusiness : true) &&
