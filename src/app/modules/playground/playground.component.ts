@@ -44,12 +44,9 @@ export class PlaygroundComponent {
     this.h$.pipe(mapTo({ button: 'h' })),
     this.i$.pipe(mapTo({ button: 'i' })),
     this.j$.pipe(mapTo({ button: 'j' }))
-  ).pipe(distinctUntilChanged());
+  ).pipe(distinctUntilChanged(), startWith({ button: '' }));
 
-  counter$ = this.clicks$.pipe(
-    scan((acc) => (acc += 1), 0),
-    startWith(0)
-  );
+  counter$ = this.clicks$.pipe(scan((acc) => (acc += 1), -1));
   prevClick$ = this.clicks$.pipe(scan((acc, curr) => curr.button + acc, ''));
   customPipe$ = this.counter$.pipe(discardOddDoubleEven());
   customPipe2$ = this.counter$.pipe(oddOrEven());
