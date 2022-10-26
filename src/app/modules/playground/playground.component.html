@@ -20,7 +20,7 @@
         obs1: store$ | async,
         obs2: all$ | async
       } as observables"> -->
-    <ng-container *ngIf="counterState$ | async as store">
+    <ng-container *ngIf="counterState2$ | async as store">
 
       <h1>
         Button clicked => {{ store.button | uppercase}}
@@ -32,6 +32,14 @@
 
       <h1>
         Buttons clicked => {{ store.prevClicks }}
+      </h1>
+
+      <h1>
+        CustomPipe applied => {{ store.customPipe }}
+      </h1>
+
+      <h1>
+        CustomPipe2 applied => {{ store.customPipe2 }}
       </h1>
     </ng-container>
   </mat-card-content>
