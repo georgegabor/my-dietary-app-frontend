@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { StateService } from '../../../shared/state.service';
+import { StateService } from '../../../../../shared/services/state.service';
 import { Filter } from '../models/filter';
 import { Todo } from '../models/todo';
 import { TodosApiService } from './api/todos-api.service';
 
 interface TodoState {
   todos: Todo[];
-  selectedTodoId: number;
+  selectedTodoId: number | undefined;
   filter: Filter;
 }
 
@@ -35,7 +35,7 @@ export class TodosStateService extends StateService<TodoState> {
   todosNotDone$: Observable<Todo[]> = this.todosFiltered$.pipe(map((todos) => todos.filter((todo) => !todo.isDone)));
   filter$: Observable<Filter> = this.select((state) => state.filter);
 
-  selectedTodo$: Observable<Todo> = this.select((state) => {
+  selectedTodo$: Observable<Todo | undefined> = this.select((state) => {
     if (state.selectedTodoId === 0) {
       return new Todo();
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StateService } from '../../shared/state.service';
+import { StateService } from '../../../../shared/services/state.service';
 
 interface CounterState {
   count: number;
