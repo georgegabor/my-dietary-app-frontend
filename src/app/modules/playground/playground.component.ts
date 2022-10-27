@@ -48,7 +48,7 @@ export class PlaygroundComponent {
     }
   ).pipe(startWith(initialState));
 
-  counterState2$ = this._click$.pipe(
+  counterState2$: Observable<UserState> = this._click$.pipe(
     withLatestFrom(
       this.counter$,
       this.prevClick$,
