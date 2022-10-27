@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { combineLatest, distinctUntilChanged, mapTo, merge, Observable, pipe, scan, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, pipe, scan } from 'rxjs';
 import { filter, map, startWith, tap, withLatestFrom } from 'rxjs/operators';
 
 export interface UserState {
@@ -24,35 +24,19 @@ let initialState: UserState = {
   styleUrls: ['./playground.component.scss'],
 })
 export class PlaygroundComponent {
-  a$ = new Subject<void>();
-  b$ = new Subject<void>();
-  c$ = new Subject<void>();
-  d$ = new Subject<void>();
-  f$ = new Subject<void>();
-  g$ = new Subject<void>();
-  h$ = new Subject<void>();
-  i$ = new Subject<void>();
-  j$ = new Subject<void>();
+  _click$ = new BehaviorSubject({ button: '' });
 
-  clicks$ = merge(
-    this.a$.pipe(mapTo({ button: 'a' })),
-    this.b$.pipe(mapTo({ button: 'b' })),
-    this.c$.pipe(mapTo({ button: 'c' })),
-    this.d$.pipe(mapTo({ button: 'd' })),
-    this.f$.pipe(mapTo({ button: 'f' })),
-    this.g$.pipe(mapTo({ button: 'g' })),
-    this.h$.pipe(mapTo({ button: 'h' })),
-    this.i$.pipe(mapTo({ button: 'i' })),
-    this.j$.pipe(mapTo({ button: 'j' }))
-  ).pipe(distinctUntilChanged(), startWith({ button: '' }));
+  click(s: string) {
+    this._click$.next({ button: s });
+  }
 
-  counter$ = this.clicks$.pipe(scan((acc) => (acc += 1), -1));
-  prevClick$ = this.clicks$.pipe(scan((acc, curr) => curr.button + acc, ''));
+  counter$ = this._click$.pipe(scan((acc) => (acc += 1), -1));
+  prevClick$ = this._click$.pipe(scan((acc, curr) => curr.button + acc, ''));
   customPipe$ = this.counter$.pipe(discardOddDoubleEven());
   customPipe2$ = this.counter$.pipe(oddOrEven());
 
   counterState$: Observable<UserState> = combineLatest(
-    [this.clicks$, this.counter$, this.prevClick$, this.customPipe$, this.customPipe2$],
+    [this._click$, this.counter$, this.prevClick$, this.customPipe$, this.customPipe2$],
     (clicks, counter, prevClick, customPipe, customPipe2) => {
       return {
         button: clicks.button,
@@ -64,15 +48,15 @@ export class PlaygroundComponent {
     }
   ).pipe(startWith(initialState));
 
-  counterState2$ = this.clicks$.pipe(
+  counterState2$ = this._click$.pipe(
     withLatestFrom(
       this.counter$,
       this.prevClick$,
       this.customPipe$,
       this.customPipe2$,
-      (clicks, counter, prevClick, customPipe, customPipe2) => {
+      (click, counter, prevClick, customPipe, customPipe2) => {
         return {
-          button: clicks.button,
+          button: click.button,
           clickCounter: counter,
           prevClicks: prevClick,
           customPipe: customPipe,
