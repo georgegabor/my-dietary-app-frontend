@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -23,7 +23,11 @@ export class TableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort = new MatSort();
   @ViewChild(MatTable) table!: MatTable<any>;
 
-  constructor(public readonly userFacadeService: UserFacadeService) {}
+  constructor(
+    public readonly userFacadeService: UserFacadeService,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
+  ) {}
 
   appLogic = (state: UserState) => {
     this.pageSize = state.pagination.pageSize;
@@ -43,6 +47,18 @@ export class TableComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.userFacadeService.state$.subscribe(this.appLogic);
+    });
+
+    this.cdr.detach();
+  }
+
+  update() {
+    this.cdr.detectChanges();
+  }
+
+  updateUser() {
+    this.zone.run(() => {
+      this.userFacadeService.updateUser();
     });
   }
 
