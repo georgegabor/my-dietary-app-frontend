@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material/material.module';
+import { CdComponent } from './modules/cd/cd/cd.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { FacadesWithRxjsComponent } from './modules/facadesWithRxjs/facadesWithRxjs.component';
 import { FoodModule } from './modules/food/food.module';
@@ -15,6 +16,7 @@ import { Form3Component } from './modules/form3/form3.component';
 import { PlaygroundComponent } from './modules/playground/playground.component';
 import { TableComponent } from './modules/table/table.component';
 import { NavComponent } from './nav/nav.component';
+import { ChangeDetectionProfilerService } from './shared/services/change-detection-profiler.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { NavComponent } from './nav/nav.component';
     Form3Component,
     PlaygroundComponent,
     FacadesWithRxjsComponent,
+    CdComponent,
   ],
   imports: [
     HttpClientModule,
@@ -40,4 +43,6 @@ import { NavComponent } from './nav/nav.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private cd: ChangeDetectionProfilerService) {}
+}
