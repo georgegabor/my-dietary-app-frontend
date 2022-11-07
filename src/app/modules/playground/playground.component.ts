@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable, pipe, scan, Subject } from 'rxjs';
+import { combineLatest, Observable, pipe, scan, Subject } from 'rxjs';
 import { filter, map, mapTo, startWith, tap, withLatestFrom } from 'rxjs/operators';
 
 export interface UserState {
@@ -44,18 +44,13 @@ export class PlaygroundComponent {
   customPipe$ = this.counter$.pipe(startWith(0), discardOddDoubleEven());
   customPipe2$ = this.counter$.pipe(oddOrEven());
 
-  // counterState$: Observable<UserState> = combineLatest(
-  //   [this._click$, this.counter$, this.prevClick$, this.customPipe$, this.customPipe2$],
-  //   (clicks, counter, prevClick, customPipe, customPipe2) => {
-  //     return {
-  //       button: clicks.button,
-  //       clickCounter: counter,
-  //       prevClicks: prevClick,
-  //       customPipe: customPipe,
-  //       customPipe2: customPipe2,
-  //     };
-  //   }
-  // ).pipe(startWith(initialState));
+  counterState$: Observable<UserState> = combineLatest({
+    button: this._click$.pipe(map((x) => x.button)),
+    clickCounter: this.counter$,
+    prevClicks: this.prevClick$,
+    customPipe: this.customPipe$,
+    customPipe2: this.customPipe2$,
+  }).pipe(startWith(initialState));
 
   counterState2$: Observable<UserState> = this._click$.pipe(
     tap(console.log),
