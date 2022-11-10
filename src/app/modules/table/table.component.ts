@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -11,6 +11,7 @@ import { User, UserFacadeService, UserState } from './user-facade.service';
   selector: 'table-overview-example',
   styleUrls: ['table.component.scss'],
   templateUrl: 'table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];

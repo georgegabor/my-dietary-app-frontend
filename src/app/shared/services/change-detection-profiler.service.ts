@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { filter, map, merge, pairwise } from 'rxjs';
+import { filter, map, merge, pairwise, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +28,11 @@ export class ChangeDetectionProfilerService {
       .pipe(
         pairwise(),
         filter((eventPair) => eventPair[1].type === 'stable'),
-        map((eventPair) => eventPair[1].time - eventPair[0].time)
+        map((eventPair) => eventPair[1].time - eventPair[0].time),
+        tap((timing) => {
+          console.log(`Change Detection took ${timing.toLocaleString()} ms`);
+        })
       )
-      .subscribe((timing) => {
-        console.log(`Change Detection took ${timing.toLocaleString()} ms`);
-      });
+      .subscribe();
   }
 }
