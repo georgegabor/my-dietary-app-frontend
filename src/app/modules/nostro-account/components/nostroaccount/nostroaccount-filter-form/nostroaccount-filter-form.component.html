@@ -1,0 +1,44 @@
+<h1 class="form-page-title">Nostro Accounts</h1>
+<hr style="margin-bottom: 2em;">
+
+<form [formGroup]="nostroAccountFilterForm">
+
+  <div fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>BBG Code</mat-label>
+      <input matInput formControlName="bbgCode" type="text" />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear"
+        (click)="clearField('bbgCode')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Counterparty</mat-label>
+      <input matInput formControlName="cpty" type="text" />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear" (click)="clearField('cpty')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Security Account</mat-label>
+      <input matInput formControlName="secAcc" type="text" />
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear" (click)="clearField('secAcc')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-row align-items-center" style="margin-top: 5px;">
+    <div class="col-auto">
+      <button (click)="onSubmit()" class="btn btn-primary mb-2 btn-lg"> <span class="glyphicon glyphicon-search"></span>
+        Search</button>
+    </div>
+    <div class="col-auto">
+      <button (click)="onReset()" class="btn btn-secondary mb-2 btn-lg">Reset</button>
+    </div>
+  </div>
+
+</form>

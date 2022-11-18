@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ApplicationRef, NgModule } from '@angular/core';
+import { DefaultValueAccessor } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -13,10 +14,20 @@ import { FoodModule } from './modules/food/food.module';
 import { FormComponent } from './modules/form/form.component';
 import { Form2Component } from './modules/form2/form2.component';
 import { Form3Component } from './modules/form3/form3.component';
+import { NostroAccountModule } from './modules/nostro-account/nostro-account.module';
 import { PlaygroundComponent } from './modules/playground/playground.component';
 import { TableComponent } from './modules/table/table.component';
 import { NavComponent } from './nav/nav.component';
 import { ChangeDetectionProfilerService } from './shared/services/change-detection-profiler.service';
+
+const original = DefaultValueAccessor.prototype.registerOnChange;
+
+DefaultValueAccessor.prototype.registerOnChange = function (fn) {
+  return original.call(this, (value) => {
+    const trimmed = typeof value === 'string' ? value.trim() : value;
+    return fn(trimmed);
+  });
+};
 
 @NgModule({
   declarations: [
@@ -39,10 +50,25 @@ import { ChangeDetectionProfilerService } from './shared/services/change-detecti
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    NostroAccountModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private cd: ChangeDetectionProfilerService) {}
+  // constructor(private cd: ChangeDetectionProfilerService) {}
+  // in Devtools use cmd:
+  // ng.probe($0).injector.get(ng.coreTokens.ApplicationRef).tick()
+  // constructor(applicationRef: ApplicationRef) {
+  //   const originalTick = applicationRef.tick;
+  //   applicationRef.tick = function () {
+  //     const windowPerfomance = window.performance;
+  //     const before = windowPerfomance.now();
+  //     const retValue = originalTick.apply(this, []);
+  //     const after = windowPerfomance.now();
+  //     const runTime = after - before;
+  //     window.console.log('CHANGE DETECTION TIME', runTime);
+  //     return retValue;
+  //   };
+  // }
 }

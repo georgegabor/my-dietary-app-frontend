@@ -6,7 +6,7 @@ import { fromEvent } from 'rxjs';
   templateUrl: './cd.component.html',
   styleUrls: ['./cd.component.scss'],
 })
-export class CdComponent implements AfterViewInit, AfterViewChecked {
+export class CdComponent {
   @ViewChild('btn')
   btnEl!: ElementRef<HTMLButtonElement>;
 
@@ -16,34 +16,35 @@ export class CdComponent implements AfterViewInit, AfterViewChecked {
     console.log('onClick');
   }
 
-  ngOnChanges() {
-    console.log('ngOnChanges');
-  }
+  // ngOnChanges() {
+  //   console.log('ngOnChanges');
+  // }
 
-  ngOnInit() {
-    console.log('ngOnInit');
-  }
+  // ngOnInit() {
+  //   console.log('ngOnInit');
+  // }
 
-  ngDoCheck() {
-    console.log('ngDoCheck');
-  }
+  // ngDoCheck() {
+  //   console.log('ngDoCheck');
+  // }
 
-  ngAfterContentInit() {
-    console.log('ngAfterContentInit');
-  }
+  // ngAfterContentInit() {
+  //   console.log('ngAfterContentInit');
+  // }
 
-  ngAfterContentChecked() {
-    console.log('ngAfterContentChecked');
-  }
+  // ngAfterContentChecked() {
+  //   console.log('ngAfterContentChecked');
+  // }
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
+    console.log(this);
     this.setupClickListener();
   }
 
-  ngAfterViewChecked() {
-    console.log('CD performed (ngAfterViewChecked)');
-  }
+  // ngAfterViewChecked() {
+  //   console.log('CD performed (ngAfterViewChecked)');
+  // }
 
   private setupClickListener() {
     this.zone.runOutsideAngular(() => {

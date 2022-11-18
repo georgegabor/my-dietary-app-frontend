@@ -29,6 +29,7 @@ export class ChangeDetectionProfilerService {
         pairwise(),
         filter((eventPair) => eventPair[1].type === 'stable'),
         map((eventPair) => eventPair[1].time - eventPair[0].time),
+        // tap(() => console.log(this)),
         tap((timing) => {
           console.log(`Change Detection took ${timing.toLocaleString()} ms`);
         })

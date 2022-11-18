@@ -1,0 +1,107 @@
+<app-nostroaccount-filter-form [title]="title" (submitClicked)="onSubmit($event)">
+</app-nostroaccount-filter-form>
+
+<button (click)="addNewNostroAccount()" class="btn btn-primary mb-2 btn-lg"
+  style="margin-top: 20px; margin-bottom: 10px">
+  <span class="glyphicon glyphicon-search"></span> New
+</button>
+
+<form [formGroup]="nostroAccountForm" autocomplete="off">
+  <div class="table">
+    <ng-container formArrayName="nostroAccountRows">
+      <div class="mat-elevation-z1" style="margin-top: 10px">
+        <mat-table #table [dataSource]="dataSource" class="table-items" matSort matSortDisableClear>
+          <ng-container matColumnDef="bbgCode">
+            <mat-header-cell mat-sort-header *matHeaderCellDef>Nostro Short</mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <input matInput type="text" [ngClass]="{
+                  'mat-input-element-selected': isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  ),
+                  'mat-input-element': !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                }" formControlName="bbgCode" [readonly]="
+                  !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                " />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="secAcc">
+            <mat-header-cell mat-sort-header *matHeaderCellDef>Security Account</mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <input matInput required="true" [ngClass]="{
+                  'mat-input-element-selected': isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  ),
+                  'mat-input-element': !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                }" type="text" formControlName="secAcc" [readonly]="
+                  !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                " />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cpty">
+            <mat-header-cell mat-sort-header *matHeaderCellDef>Counter Party</mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
+              <input matInput type="text" [ngClass]="{
+                  'mat-input-element-selected': isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  ),
+                  'mat-input-element': !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                }" formControlName="cpty" [readonly]="
+                  !isEditingNostroAccount(
+                    nostroAccountForm.get('nostroAccountRows').value[i].nostroId
+                  )
+                " />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell class="last-column" *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell class="last-column" *matCellDef="let element; let i = index" [formGroup]="element">
+
+              <mat-icon class="action-icon" matTooltip="Save" [matTooltipPosition]="'before'"
+                (click)="saveNostrAccount(nostroAccountForm, i)"
+                *ngIf="isEditingNostroAccount(nostroAccountForm.get('nostroAccountRows').value[i].nostroId)">
+                check_circle</mat-icon>
+
+              <mat-icon class="action-icon" matTooltip="Cancel" [matTooltipPosition]="'above'" color="warn"
+                (click)="cancelEditing(nostroAccountForm, i)"
+                *ngIf="isEditingNostroAccount(nostroAccountForm.get('nostroAccountRows').value[i].nostroId)">
+                cancel</mat-icon>
+
+              <mat-icon class="action-icon"
+                *ngIf="!isEditingNostroAccount(nostroAccountForm.get('nostroAccountRows').value[i].nostroId)"
+                matTooltip="Edit" [matTooltipPosition]="'before'" (click)="editNostrAccount(nostroAccountForm, i)">
+                edit</mat-icon>
+
+              <mat-icon class="action-icon"
+                *ngIf="!isEditingNostroAccount(nostroAccountForm.get('nostroAccountRows').value[i].nostroId)"
+                matTooltip="Delete" [matTooltipPosition]="'above'" color="warn"
+                (click)="deleteNostroAccount(nostroAccountForm, i)">
+                delete</mat-icon>
+
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+
+
+        <mat-paginator [length]="this.dataSource.data.length" #paginator>
+        </mat-paginator>
+
+      </div>
+    </ng-container>
+  </div>
+</form>

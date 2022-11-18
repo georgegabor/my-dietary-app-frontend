@@ -1,3 +1,4 @@
+import { NostroaccountListComponent } from './modules/nostro-account/components/nostroaccount/nostroaccount-list/nostroaccount-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CdComponent } from './modules/cd/cd/cd.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'playground', component: PlaygroundComponent },
       { path: 'facade', component: FacadesWithRxjsComponent },
       { path: 'ngZone', component: CdComponent },
+      { path: 'nostro', component: NostroaccountListComponent },
     ],
   },
 ];
