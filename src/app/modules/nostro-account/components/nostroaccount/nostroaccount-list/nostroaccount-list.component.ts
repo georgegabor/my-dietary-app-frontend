@@ -68,6 +68,7 @@ export class NostroaccountListComponent {
   };
 
   editClicked$ = new Subject<any>();
+  addClicked$ = new Subject<void>();
 
   manipulateData$ = (data: NostroAccount[], row: any): Observable<NostroAccount[]> => {
     data.unshift(new NostroAccount());
@@ -75,10 +76,10 @@ export class NostroaccountListComponent {
   };
 
   takeInput$ = (data: any[]) =>
-    this.editClicked$.pipe(
-      switchMap((row) => this.manipulateData$(data, row)),
-      switchMap(this.processData$)
-    );
+    merge(
+      this.editClicked$.pipe(switchMap((row) => this.manipulateData$(data, row))),
+      this.addClicked$.pipe(switchMap((_) => this.manipulateData$(data, _)))
+    ).pipe(switchMap(this.processData$));
 
   merged$ = this.nostroAccountService.nostroAccountList$.pipe(
     tap(this.processData$),
