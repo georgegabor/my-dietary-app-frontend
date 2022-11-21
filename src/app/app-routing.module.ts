@@ -10,6 +10,7 @@ import { FormComponent } from './modules/form/form.component';
 import { PlaygroundComponent } from './modules/playground/playground.component';
 import { TableComponent } from './modules/table/table.component';
 import { NavComponent } from './nav/nav.component';
+import { MemoryGameComponent } from './modules/memory-game/memory-game.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/nav', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'facade', component: FacadesWithRxjsComponent },
       { path: 'ngZone', component: CdComponent },
       { path: 'nostro', component: NostroaccountListComponent },
+      { path: 'memory', component: MemoryGameComponent },
     ],
   },
 ];

@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, tap, merge, switchMap, of, Observable } from 'rxjs';
 import { NostroAccountFilter } from '../../../models/nostro-account-filter';
 import { NostroAccount } from '../../../models/NostroAccount';
 import { NostroaccountService } from '../../../services/nostroaccount.service';
@@ -36,11 +36,7 @@ export class NostroaccountListComponent {
     });
   }
 
-  ngAfterViewInit() {
-    this.subscription = this.nostroAccountService.nostroAccountList$.subscribe(this.processData);
-  }
-
-  processData = (data: NostroAccount[]) => {
+  processData$ = (data: NostroAccount[]): Observable<NostroAccount[]> => {
     this.nostroAccountForm = this.fb.group({
       nostroAccountRows: this.fb.array(
         data.map((val) =>
@@ -67,7 +63,31 @@ export class NostroaccountListComponent {
     this.dataSource.paginator = this.paginator;
 
     setTimeout(() => (this.dataSource.data = (this.nostroAccountForm.get('nostroAccountRows') as FormArray).controls));
+
+    return of(data);
   };
+
+  editClicked$ = new Subject<any>();
+
+  manipulateData$ = (data: NostroAccount[], row: any): Observable<NostroAccount[]> => {
+    data.unshift(new NostroAccount());
+    return of(data);
+  };
+
+  takeInput$ = (data: any[]) =>
+    this.editClicked$.pipe(
+      switchMap((row) => this.manipulateData$(data, row)),
+      switchMap(this.processData$)
+    );
+
+  merged$ = this.nostroAccountService.nostroAccountList$.pipe(
+    tap(this.processData$),
+    switchMap((data) => this.takeInput$(data))
+  );
+
+  ngAfterViewInit() {
+    this.subscription = this.merged$.subscribe();
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

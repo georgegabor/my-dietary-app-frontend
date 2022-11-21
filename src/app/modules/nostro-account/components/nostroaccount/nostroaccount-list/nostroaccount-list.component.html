@@ -81,7 +81,7 @@
 
               <mat-icon class="action-icon"
                 *ngIf="!isEditingNostroAccount(nostroAccountForm.get('nostroAccountRows').value[i].nostroId)"
-                matTooltip="Edit" [matTooltipPosition]="'before'" (click)="editNostrAccount(nostroAccountForm, i)">
+                matTooltip="Edit" [matTooltipPosition]="'before'" (click)="editClicked$.next(i)">
                 edit</mat-icon>
 
               <mat-icon class="action-icon"

@@ -14,6 +14,7 @@ import { FoodModule } from './modules/food/food.module';
 import { FormComponent } from './modules/form/form.component';
 import { Form2Component } from './modules/form2/form2.component';
 import { Form3Component } from './modules/form3/form3.component';
+import { MemoryGameComponent } from './modules/memory-game/memory-game.component';
 import { NostroAccountModule } from './modules/nostro-account/nostro-account.module';
 import { PlaygroundComponent } from './modules/playground/playground.component';
 import { TableComponent } from './modules/table/table.component';
@@ -41,6 +42,7 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     PlaygroundComponent,
     FacadesWithRxjsComponent,
     CdComponent,
+    MemoryGameComponent,
   ],
   imports: [
     HttpClientModule,
@@ -50,7 +52,7 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NostroAccountModule
+    NostroAccountModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

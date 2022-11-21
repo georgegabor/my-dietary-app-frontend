@@ -1,0 +1,24 @@
+.parent {
+  border-spacing: 5px;
+  width: 50%;
+  padding: .5em;
+}
+
+.parent.perspective {
+  perspective: 50em;
+}
+
+.child {
+  margin: .5em;
+  max-width: 2em;
+  min-width: 2em;
+  height: 2.8em;
+  padding: .5em;
+  display: table-cell;
+  border: 1px solid rgba(0, 0, 0, .5);
+}
+
+.parent.perspective .child {
+  transform: rotateX(40deg);
+  transition: all .3s ease-in;
+}
