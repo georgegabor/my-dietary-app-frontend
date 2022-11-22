@@ -1,9 +1,10 @@
+import { mapTo } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject, Subscription, tap, merge, switchMap, of, Observable } from 'rxjs';
+import { Subject, Subscription, tap, merge, switchMap, of, Observable, scan, interval } from 'rxjs';
 import { NostroAccountFilter } from '../../../models/nostro-account-filter';
 import { NostroAccount } from '../../../models/NostroAccount';
 import { NostroaccountService } from '../../../services/nostroaccount.service';
@@ -79,15 +80,29 @@ export class NostroaccountListComponent {
     merge(
       this.editClicked$.pipe(switchMap((row) => this.manipulateData$(data, row))),
       this.addClicked$.pipe(switchMap((_) => this.manipulateData$(data, _)))
-    ).pipe(switchMap(this.processData$));
+    ).pipe(
+      switchMap(this.processData$),
+      switchMap(() => interval(2500).pipe(tap((v) => console.log('Tick from takeInput$: ' + v))))
+    );
 
   merged$ = this.nostroAccountService.nostroAccountList$.pipe(
     tap(this.processData$),
     switchMap((data) => this.takeInput$(data))
   );
 
+  tick$ = interval(3000);
+  // state$ = (data: any) => (data.pipe(scan((acc, curr) => acc + curr)))
+  input$ = this.editClicked$.pipe(mapTo(5));
+
+  merged2$ = merge(this.tick$, this.input$).pipe(
+    tap((v) => console.log('Tick: ' + v)),
+    scan((acc, curr) => acc + curr),
+    tap((v) => console.log('Res: ' + v))
+  );
+
   ngAfterViewInit() {
     this.subscription = this.merged$.subscribe();
+    this.subscription.add(this.merged2$.subscribe());
   }
 
   ngOnDestroy() {

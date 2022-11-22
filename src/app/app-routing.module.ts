@@ -1,3 +1,4 @@
+import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
 import { NostroaccountListComponent } from './modules/nostro-account/components/nostroaccount/nostroaccount-list/nostroaccount-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'ngZone', component: CdComponent },
       { path: 'nostro', component: NostroaccountListComponent },
       { path: 'memory', component: MemoryGameComponent },
+      { path: 'simpleTable', component: SimpleTableComponent },
     ],
   },
 ];

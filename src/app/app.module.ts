@@ -1,3 +1,4 @@
+import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
@@ -43,6 +44,7 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     FacadesWithRxjsComponent,
     CdComponent,
     MemoryGameComponent,
+    SimpleTableComponent,
   ],
   imports: [
     HttpClientModule,
