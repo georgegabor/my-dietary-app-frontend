@@ -1,10 +1,10 @@
-import { mapTo } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject, Subscription, tap, merge, switchMap, of, Observable, scan, interval } from 'rxjs';
+import { BehaviorSubject, interval, merge, Observable, of, scan, Subject, Subscription, switchMap, tap } from 'rxjs';
+import { mapTo, take } from 'rxjs/operators';
 import { NostroAccountFilter } from '../../../models/nostro-account-filter';
 import { NostroAccount } from '../../../models/NostroAccount';
 import { NostroaccountService } from '../../../services/nostroaccount.service';
@@ -76,18 +76,28 @@ export class NostroaccountListComponent {
     return of(data);
   };
 
+  showNumber$ = new BehaviorSubject<number>(0);
+
   takeInput$ = (data: any[]) =>
     merge(
       this.editClicked$.pipe(switchMap((row) => this.manipulateData$(data, row))),
       this.addClicked$.pipe(switchMap((_) => this.manipulateData$(data, _)))
     ).pipe(
-      switchMap(this.processData$),
-      switchMap(() => interval(2500).pipe(tap((v) => console.log('Tick from takeInput$: ' + v))))
+      // switchMap(this.processData$),
+      switchMap(() =>
+        interval(1000).pipe(
+          take(5)
+          // scan((acc, curr) => (acc = acc + curr))
+        )
+      )
     );
 
   merged$ = this.nostroAccountService.nostroAccountList$.pipe(
     tap(this.processData$),
-    switchMap((data) => this.takeInput$(data))
+    switchMap((data) => this.takeInput$(data)),
+    // tap(console.log),
+    scan((acc, curr) => acc + curr),
+    tap((v) => this.showNumber$.next(v))
   );
 
   tick$ = interval(3000);
@@ -101,8 +111,8 @@ export class NostroaccountListComponent {
   );
 
   ngAfterViewInit() {
-    this.subscription = this.merged$.subscribe();
-    this.subscription.add(this.merged2$.subscribe());
+    this.subscription = this.merged$.subscribe((v) => console.log('subscribe: ' + v));
+    // this.subscription.add(this.merged2$.subscribe());
   }
 
   ngOnDestroy() {

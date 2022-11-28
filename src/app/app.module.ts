@@ -1,5 +1,5 @@
 import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { DefaultValueAccessor } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -21,6 +21,8 @@ import { PlaygroundComponent } from './modules/playground/playground.component';
 import { TableComponent } from './modules/table/table.component';
 import { NavComponent } from './nav/nav.component';
 import { ChangeDetectionProfilerService } from './shared/services/change-detection-profiler.service';
+import { LoaderInterceptor } from './core/centura-loader.inteceptor';
+import { CenturaErrorInterceptor } from './core/centura-error.interceptor';
 
 const original = DefaultValueAccessor.prototype.registerOnChange;
 
@@ -56,7 +58,18 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     MatSortModule,
     NostroAccountModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CenturaErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

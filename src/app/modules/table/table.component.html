@@ -1,14 +1,7 @@
 <div class="button-row">
-  <button mat-raised-button color="primary" (click)="userFacadeService.addNewUser()">Add</button>
-  <button mat-raised-button color="primary" (click)="userFacadeService.removeFirst()">Remove First</button>
-  <button mat-raised-button color="primary" (click)="updateUser()">Update First</button>
-  <button mat-raised-button color="primary" (click)="changeSearchCriteria()">Change Search Criteria</button>
-  <button mat-raised-button color="primary" (click)="changePagination()">Change Pagination</button>
-</div>
-
-<div class="button-row">
-  <button mat-raised-button color="primary" (click)="update()">Update</button>
-
+  <button mat-raised-button color="primary" (click)="createClick$.next()">CREATE</button>
+  <button mat-raised-button color="primary" (click)="editClick$.next()">EDIT</button>
+  <button mat-raised-button color="primary" (click)="cancelClick$.next()">CANCEL</button>
 </div>
 
 <mat-form-field appearance="standard">

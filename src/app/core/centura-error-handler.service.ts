@@ -1,7 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { CenturaErrorDialogComponent } from '@app/shared/components/centura-error-dialog/centura-error-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +9,7 @@ export class CenturaErrorHandlerService {
   errorTitle: string;
   serverErrorMessage: string;
 
-  constructor(private dialog: MatDialog) {}
+  // constructor(private dialog: MatDialog) {}
 
   resetErrors(errors: Map<string, string>): Map<string, string> {
     errors = new Map();
@@ -30,17 +28,18 @@ export class CenturaErrorHandlerService {
   }
 
   openDialog(status: number, title: string, message: string) {
-    this.dialog.open(CenturaErrorDialogComponent, {
-      minWidth: 600,
-      maxWidth: 600,
-      minHeight: 'fit-content',
-      maxHeight: 'fit-content',
-      data: {
-        status: status,
-        title: title,
-        message: message,
-      },
-    });
+    console.log('should open component');
+    // this.dialog.open(CenturaErrorDialogComponent, {
+    //   minWidth: 600,
+    //   maxWidth: 600,
+    //   minHeight: 'fit-content',
+    //   maxHeight: 'fit-content',
+    //   data: {
+    //     status: status,
+    //     title: title,
+    //     message: message,
+    //   },
+    // });
   }
 
   getServerErrorMessages(): Map<string, string> {

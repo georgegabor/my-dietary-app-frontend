@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ChangeDetectorRe
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { interval, take, tap } from 'rxjs';
+import { generate, interval, take, tap } from 'rxjs';
 
 export interface PeriodicElement {
   name: string;
@@ -42,6 +42,12 @@ export class SimpleTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  gen$ = generate(
+    1,
+    (x) => x < 100,
+    (x) => x * 2
+  ).pipe(tap(console.log));
+
   ngAfterViewInit() {
     // const obs$ = interval().pipe(
     //   take(500),
@@ -76,7 +82,8 @@ export class SimpleTableComponent implements OnInit {
       })
     );
 
-    obs$.subscribe();
+    // obs$.subscribe();
+    this.gen$.subscribe();
   }
 
   announceSortChange(sortState: Sort) {

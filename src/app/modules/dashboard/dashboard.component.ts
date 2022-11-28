@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { combineLatest, concat, forkJoin, Observable, zip } from 'rxjs';
+import { combineLatest, concat, forkJoin, Observable, tap, zip } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { ApiService, State } from './../../shared/services/api.service';
 
@@ -53,33 +53,36 @@ export class DashboardComponent {
     }
   );
 
-  forkJoin = forkJoin({
+  forkJoin$ = forkJoin({
     google: ajax.getJSON('https://api.github.com/users/google'),
     microsoft: ajax.getJSON('https://api.github.com/users/microsoft'),
     users: ajax.getJSON('https://api.github.com/users'),
-  })
-    // { google: object, microsoft: object, users: array }
-    .subscribe((x) => {
-      console.log('forkJoin');
-      console.log(x);
-    });
+  }).pipe(
+    tap(() => console.log('forkJoin$')),
+    tap(console.log)
+  );
 
-  zip = zip(
+  zip$ = zip(
     ajax.getJSON('https://api.github.com/users/google'),
     ajax.getJSON('https://api.github.com/users/microsoft'),
     ajax.getJSON('https://api.github.com/users')
-  ).subscribe((x) => {
-    console.log('zip');
-    console.log(x);
-  });
+  ).pipe(
+    tap(() => console.log('zip$')),
+    tap(console.log)
+  );
 
-  concat = concat(
+  concat$ = concat(
     ajax.getJSON('https://api.github.com/users/google'),
     ajax.getJSON('https://api.github.com/users/microsoft'),
     ajax.getJSON('https://api.github.com/users')
-  ).subscribe((x) => {
-    console.log('concat');
-    console.log(x);
-  });
-  constructor(private breakpointObserver: BreakpointObserver, private readonly apiService: ApiService) {}
+  ).pipe(
+    tap(() => console.log('concat$')),
+    tap(console.log)
+  );
+
+  constructor(private breakpointObserver: BreakpointObserver, private readonly apiService: ApiService) {
+    // this.forkJoin$.subscribe();
+    // this.zip$.subscribe();
+    // this.concat$.subscribe();
+  }
 }

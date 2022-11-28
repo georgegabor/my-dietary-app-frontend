@@ -1,3 +1,5 @@
+import { mapTo } from 'rxjs/operators';
+import { Subject, tap, merge } from 'rxjs';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,6 +21,10 @@ export class TableComponent implements OnInit {
   users: User[] = [];
   pageSize!: number;
   pageIndex = 0;
+
+  createClick$ = new Subject<void>();
+  editClick$ = new Subject<void>();
+  cancelClick$ = new Subject<void>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort: MatSort = new MatSort();
@@ -50,17 +56,32 @@ export class TableComponent implements OnInit {
       this.userFacadeService.state$.subscribe(this.appLogic);
     });
 
-    this.cdr.detach();
+    merge(
+      this.createClick$.pipe(tap(this.create)),
+      this.editClick$.pipe(tap(this.update)),
+      this.cancelClick$.pipe(tap(this.cancel))
+    ).subscribe();
+
+    // this.cdr.detach();
   }
+
+  // update() {
+  //   this.cdr.detectChanges();
+  // }
 
   update() {
-    this.cdr.detectChanges();
+    // this.zone.run(() => {
+    // this.userFacadeService.updateUser();
+    // });
+    console.log('update');
   }
 
-  updateUser() {
-    this.zone.run(() => {
-      this.userFacadeService.updateUser();
-    });
+  create() {
+    console.log('create');
+  }
+
+  cancel() {
+    console.log('cancel');
   }
 
   applyFilter(event: Event) {

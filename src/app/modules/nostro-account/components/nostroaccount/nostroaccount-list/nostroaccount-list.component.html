@@ -1,6 +1,8 @@
 <app-nostroaccount-filter-form [title]="title" (submitClicked)="onSubmit($event)">
 </app-nostroaccount-filter-form>
 
+<h1>{{ showNumber$ | async  }}</h1>
+
 <button (click)="addClicked$.next()" class="btn btn-primary mb-2 btn-lg"
   style="margin-top: 20px; margin-bottom: 10px">
   <span class="glyphicon glyphicon-search"></span> New
