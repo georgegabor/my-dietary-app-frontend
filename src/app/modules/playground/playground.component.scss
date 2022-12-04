@@ -1,10 +1,8 @@
 .button-content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 2%;
+  grid-template-columns: repeat(5, 1fr);
   grid-row-gap: 2%;
   grid-auto-rows: 6rem;
-  // justify-items: center;
 }
 
 button {
@@ -15,14 +13,18 @@ button {
   // position: relative;
 }
 
+.text-content {
+  grid-column: 1 / 5;
+  grid-row:  2 / 5;
+  align-self: center;
+}
+
 .text {
   color: #58afd1;
 }
 
 .info-wrapper {
   display: grid;
-  max-width: 100%;
-  min-width: 100%;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2%;
 }
@@ -32,15 +34,10 @@ button {
   overflow: hidden;
 }
 
-.text-content {
-  grid-column: 1 / 3;
-  grid-row:  2 / 5;
-  justify-self: unset;
-  align-self: center;
-}
+
 
 .button-a {
-  grid-column: 1 / 2;
+  grid-column: 3 / 4;
   grid-row:  1 / 2;
   align-self: center;
   justify-self: center;
@@ -48,56 +45,56 @@ button {
 }
 
 .button-b {
-  grid-column: 2 / 3;
+  grid-column: 4/5;
   grid-row:  1 / 2;
   align-self: center;
   justify-self: center;
 }
 
 .button-c {
-  grid-column: 3 / 4;
+  grid-column: 5/6;
   grid-row:  1 / 2;
   align-self: center;
   justify-self: center;
 }
 
 .button-d {
-  grid-column: 3 / 4;
+  grid-column: 5/6;
   grid-row:  2 / 3;
   align-self: center;
   justify-self: center;
 }
 
 .button-f {
-  grid-column: 3 / 4;
+  grid-column: 5/6;
   grid-row:  3 / 4;
   align-self: center;
   justify-self: center;
 }
 
 .button-g {
-  grid-column: 3 / 4;
+  grid-column: 5/6;
   grid-row:  4 / 5;
   align-self: center;
   justify-self: center;
 }
 
 .button-h {
-  grid-column: 3 / 4;
+  grid-column: 5/6;
   grid-row:  5 / 6;
   align-self: center;
   justify-self: center;
 }
 
 .button-i {
-  grid-column: 1 / 2;
+  grid-column: 3 / 4;
   grid-row:  5 / 6;
   align-self: center;
   justify-self: center;
 }
 
 .button-j {
-  grid-column: 2 / 3;
+  grid-column: 4/5;
   grid-row:  5 / 6;
   align-self: center;
   justify-self: center;
@@ -148,13 +145,13 @@ p {
 .header {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
-  background-color: #55d4eb;
+  background-color: #898989;
 }
 
 .hero {
   grid-column: 1 / 2;
   grid-row-start: 2 / 3;
-  background-color: #d5c9e2;
+  background-color: #898989;
   min-height: 300px;
 }
 
@@ -162,7 +159,7 @@ p {
   grid-column: 1 / 2;
   grid-row: 3 / 5;
   min-height: 400px;
-  background-color: #a0c263;
+  background-color: #898989;
 }
 
 .content {
@@ -183,19 +180,19 @@ p {
   grid-column: 1 / 3;
   grid-row: 5 / 6;
   min-height: 150px;
-  background-color: #2BB673;
+  background-color: #898989;
 }
 
 .related-posts {
   grid-column: 3 / 4;
   grid-row: 5 / 6;
-  background-color: #f3cddd;
+  background-color: #898989;
 }
 
 .footer {
   grid-column: 1 / 4;
   grid-row: 6 / 7;
-  background-color: #FFA500;
+  background-color: #898989;
 }
 
 
