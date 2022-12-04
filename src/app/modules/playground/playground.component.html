@@ -10,58 +10,54 @@
 
   <div class="grid content">
     <div class="button-content">
-      <div class="first-row">
-        <div class="first-row-flex">
-          <button class="btn draw-border" color="primary" (click)="click('A')" id="button-a">A</button>
-          <button class="btn draw-border" color="primary" (click)="click('B')">B</button>
-          <button class="btn draw-border" color="primary" (click)="click('C')">C</button>
-        </div>
+
+      <div class="button-a">
+        <button class="btn draw-border" color="primary" (click)="click('A')" id="button-a">A</button>
       </div>
-
-      <div class="text-content">
-        <ng-container *ngIf="counterState2$ | async as store">
-
-          <h1>
-            Button clicked => {{ store.button | uppercase}}
-          </h1>
-
-          <h1>
-            No. Of clicks => {{ store.clickCounter }}
-          </h1>
-
-          <h1>
-            Buttons clicked => {{ store.prevClicks }}
-          </h1>
-
-          <h1>
-            CustomPipe applied => {{ store.customPipe }}
-          </h1>
-
-          <h1>
-            CustomPipe2 applied => {{ store.customPipe2 }}
-          </h1>
-        </ng-container>
-
+      <div class="button-b">
+        <button class="btn draw-border" color="primary" (click)="click('B')">B</button>
       </div>
-
+      <div class="button-c">
+        <button class="btn draw-border" color="primary" (click)="click('C')">C</button>
+      </div>
       <div class="button-d">
         <button class="btn draw-border" color="primary" (click)="click('D')">D</button>
       </div>
-
       <div class="button-f">
         <button class="btn draw-border" color="primary" (click)="click('F')">F</button>
       </div>
       <div class="button-g">
         <button class="btn draw-border" color="primary" (click)="click('G')">G</button>
       </div>
-
-      <div class="last-row">
-        <div class="last-row-flex">
-          <button class="btn draw-border" color="primary" (click)="click('H')">H</button>
-          <button class="btn draw-border" color="primary" (click)="click('I')">I</button>
-          <button class="btn draw-border" color="primary" (click)="click('J')">J</button>
-        </div>
+      <div class="button-h">
+        <button class="btn draw-border" color="primary" (click)="click('H')">H</button>
       </div>
+      <div class="button-i">
+        <button class="btn draw-border" color="primary" (click)="click('I')">I</button>
+      </div>
+      <div class="button-j">
+        <button class="btn draw-border" color="primary" (click)="click('J')">J</button>
+      </div>
+
+      <div class="text-content">
+        <ng-container *ngIf="counterState2$ | async as store">
+          <div class="info-wrapper">
+
+            <h1> Button clicked </h1>
+            <h1 class="text"> {{ store.button | uppercase}} </h1>
+            <h1> No. Of clicks </h1>
+            <h1 class="text"> {{ store.clickCounter }}</h1>
+            <h1> Buttons clicked </h1>
+            <h1 class="custom">{{ store.prevClicks }}</h1>
+            <h1> CustomPipe applied </h1>
+            <h1 class="text"> {{ store.customPipe }}</h1>
+            <h1> CustomPipe2 applied </h1>
+            <h1 class="text"> {{ store.customPipe2 }}</h1>
+
+          </div>
+        </ng-container>
+      </div>
+
     </div>
 
   </div>
