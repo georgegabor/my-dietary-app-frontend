@@ -3,7 +3,24 @@
   <div class="grid header">Header</div>
 
   <div class="grid hero">
+    <div class="text-content">
+      <ng-container *ngIf="counterState2$ | async as store">
+        <div class="info-wrapper">
 
+          <h1> Button clicked </h1>
+          <h1 class="text"> {{ store.button | uppercase}} </h1>
+          <h1> No. of clicks </h1>
+          <h1 class="text"> {{ store.clickCounter }}</h1>
+          <h1> Buttons clicked </h1>
+          <h1 class="text custom">{{ store.prevClicks }}</h1>
+          <h1> Custom pipe  </h1>
+          <h1 class="text"> {{ store.customPipe }}</h1>
+          <h1> Custom pipe 2  </h1>
+          <h1 class="text"> {{ store.customPipe2 }}</h1>
+
+        </div>
+      </ng-container>
+    </div>
   </div>
 
   <div class="grid sidebar">Sidebar</div>
@@ -11,52 +28,17 @@
   <div class="grid content">
     <div class="button-content">
 
-      <div class="button-a">
         <button class="btn draw-border" color="primary" (click)="click('A')" id="button-a">A</button>
-      </div>
-      <div class="button-b">
         <button class="btn draw-border" color="primary" (click)="click('B')">B</button>
-      </div>
-      <div class="button-c">
         <button class="btn draw-border" color="primary" (click)="click('C')">C</button>
-      </div>
-      <div class="button-d">
         <button class="btn draw-border" color="primary" (click)="click('D')">D</button>
-      </div>
-      <div class="button-f">
         <button class="btn draw-border" color="primary" (click)="click('F')">F</button>
-      </div>
-      <div class="button-g">
         <button class="btn draw-border" color="primary" (click)="click('G')">G</button>
-      </div>
-      <div class="button-h">
         <button class="btn draw-border" color="primary" (click)="click('H')">H</button>
-      </div>
-      <div class="button-i">
         <button class="btn draw-border" color="primary" (click)="click('I')">I</button>
-      </div>
-      <div class="button-j">
         <button class="btn draw-border" color="primary" (click)="click('J')">J</button>
-      </div>
 
-      <div class="text-content">
-        <ng-container *ngIf="counterState2$ | async as store">
-          <div class="info-wrapper">
 
-            <h1> Button clicked </h1>
-            <h1 class="text"> {{ store.button | uppercase}} </h1>
-            <h1> No. of clicks </h1>
-            <h1 class="text"> {{ store.clickCounter }}</h1>
-            <h1> Buttons clicked </h1>
-            <h1 class="text custom">{{ store.prevClicks }}</h1>
-            <h1> Custom pipe  </h1>
-            <h1 class="text"> {{ store.customPipe }}</h1>
-            <h1> Custom pipe 2  </h1>
-            <h1 class="text"> {{ store.customPipe2 }}</h1>
-
-          </div>
-        </ng-container>
-      </div>
 
     </div>
 
