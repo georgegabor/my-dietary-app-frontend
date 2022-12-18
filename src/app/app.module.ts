@@ -23,6 +23,7 @@ import { NavComponent } from './nav/nav.component';
 import { ChangeDetectionProfilerService } from './shared/services/change-detection-profiler.service';
 import { LoaderInterceptor } from './core/centura-loader.inteceptor';
 import { CenturaErrorInterceptor } from './core/centura-error.interceptor';
+import { StatePatternComponent } from './modules/state-pattern/components/state-pattern/state-pattern.component';
 
 const original = DefaultValueAccessor.prototype.registerOnChange;
 
@@ -47,6 +48,7 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     CdComponent,
     MemoryGameComponent,
     SimpleTableComponent,
+    StatePatternComponent,
   ],
   imports: [
     HttpClientModule,

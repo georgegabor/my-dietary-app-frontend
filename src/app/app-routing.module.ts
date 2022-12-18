@@ -1,3 +1,4 @@
+import { StatePatternComponent } from './modules/state-pattern/components/state-pattern/state-pattern.component';
 import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
 import { NostroaccountListComponent } from './modules/nostro-account/components/nostroaccount/nostroaccount-list/nostroaccount-list.component';
 import { NgModule } from '@angular/core';
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'nostro', component: NostroaccountListComponent },
       { path: 'memory', component: MemoryGameComponent },
       { path: 'simpleTable', component: SimpleTableComponent },
+      { path: 'statepattern', component: StatePatternComponent },
     ],
   },
 ];

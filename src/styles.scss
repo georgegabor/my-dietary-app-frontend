@@ -25,6 +25,10 @@
 //   A400
 // );
 
+* {
+  transition: all 1s;
+}
+
 // // The warn palette is optional (defaults to red).
 // $centura-app-gui-warn: mat.define-palette(mat.$red-palette);
 
