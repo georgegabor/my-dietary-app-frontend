@@ -1,6 +1,5 @@
+import { Component } from '@angular/core';
 import { StatePatternService } from './../../services/state-pattern.service';
-import { Component, OnInit } from '@angular/core';
-import { ConcreteStateA } from '../../models/ConcreteStateA';
 
 @Component({
   selector: 'app-state-pattern',
@@ -8,12 +7,14 @@ import { ConcreteStateA } from '../../models/ConcreteStateA';
   styleUrls: ['./state-pattern.component.scss'],
   providers: [StatePatternService],
 })
-export class StatePatternComponent implements OnInit {
+export class StatePatternComponent {
   constructor(private readonly statePatternService: StatePatternService) {}
 
-  ngOnInit() {
-    this.statePatternService.setState(new ConcreteStateA());
-    this.statePatternService.request1();
-    this.statePatternService.request2();
+  onCreate() {
+    this.statePatternService.create();
+  }
+
+  onEdit() {
+    this.statePatternService.edit();
   }
 }

@@ -1,0 +1,179 @@
+<ng-container *ngIf="isEmpty$ | async; else main">
+  <div class="search-row">
+    <span></span>
+    <mat-icon *ngIf="newClassInstance$" class="add-icon" (click)="onCreate()" color="accent" matTooltip="Add new">
+      add_circle
+    </mat-icon>
+  </div>
+</ng-container>
+
+<ng-template #main>
+  <div class="search-row" *ngIf="!isSearchRowHidden">
+    <div fxLayout fxLayoutGap="20px">
+      <mat-form-field floatLabel="never" appearance="outline">
+        <input matInput #matInput type="text" (keyup)="applyFilter($event)"
+          placeholder="Search in table..." />
+        <button mat-button matSuffix mat-icon-button (click)="matInput.value = ''; onSearchClear()" aria-label="Clear"
+          matTooltip="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <div *ngIf="activeSwitch" class="toggle">
+        <mat-label>{{ activeSwitch.textTop }}</mat-label>
+        <div class="row">
+          <p class="label-before">{{ activeSwitch.textLeft }}</p>
+          <!-- <mat-slide-toggle checked="false" (change)="onSlideToggle($event)"></mat-slide-toggle> -->
+          <p class="label-before">{{ activeSwitch.textRight }}</p>
+        </div>
+      </div>
+    </div>
+    <mat-icon *ngIf="newClassInstance$" class="add-icon" (click)="onCreate()" color="accent" matTooltip="Add new">
+      add_circle</mat-icon>
+  </div>
+
+  <form [formGroup]="form">
+    <div class="controllers-container">
+      <div class="table">
+        <mat-table #table [dataSource]="dataSource" class="table-items" matSort matSortDisableClear>
+          <!-- Columns -->
+          <ng-container *ngFor="let column of tableConfig" matColumnDef="{{ column.columnDef }}">
+            <mat-header-cell mat-sort-header *matHeaderCellDef [ngStyle]="column.tableHeaderStyle">{{
+              column.header
+              }}</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngStyle]="row.isBeingEdited ? column.formStyle : column.tableCellStyle">
+              <!-- Table cell -->
+              <div *ngIf="
+                  !row.isBeingEdited &&
+                  column.formField.inputType !== 'date' &&
+                  column.formField.inputType !== 'checkbox' &&
+                  row[column.columnDef] !== null
+                " [innerHTML]="column.cell(row)">
+              </div>
+              <div *ngIf="!row.isBeingEdited && column.formField.inputType === 'date' && row[column.columnDef] !== null"
+                [innerHTML]="column.cell(row) | date: 'dd.MM.yyyy - HH:mm:ss'">
+              </div>
+              <!-- <div *ngIf="!row.isBeingEdited && column.formField.inputType === 'checkbox'">
+                <mat-checkbox [checked]="row[column.columnDef]"> </mat-checkbox>
+              </div> -->
+              <!-- Form field -->
+              <div *ngIf="row.isBeingEdited">
+                <ng-container [ngSwitch]="column.formField.inputType">
+                  <ng-container *ngSwitchCase="'text'">
+                    <div fxLayout="row" style="align-items: center">
+                      <mat-form-field class="table-form-field" (click)="$event.stopPropagation()"
+                        [ngStyle]="column.formField.width" appearance="outline" [color]="formFieldColor">
+                        <input matInput type="text" formControlName="{{ column.columnDef }}" />
+                      </mat-form-field>
+                      <mat-error>
+                        <!-- <centura-mat-error [errors]="this.form.get(column.columnDef).errors"></centura-mat-error> -->
+                      </mat-error>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'number'">
+                    <div fxLayout="row" style="align-items: center">
+                      <mat-form-field class="table-form-field" (click)="$event.stopPropagation()"
+                        [ngStyle]="column.formField.width" appearance="outline" [color]="formFieldColor">
+                        <input matInput type="number" formControlName="{{ column.columnDef }}" />
+                      </mat-form-field>
+                      <mat-error>
+                        <!-- <centura-mat-error [errors]="this.form.get(column.columnDef).errors"></centura-mat-error> -->
+                      </mat-error>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'dropdown'">
+                    <mat-form-field class="drop-down" (click)="$event.stopPropagation()"
+                      [ngStyle]="column.formField.width" appearance="outline" [color]="formFieldColor">
+                      <mat-select formControlName="{{ column.columnDef }}" [panelClass]="'mat-select-length-override'">
+                        <mat-option *ngFor="let data of dropdownData[column.columnDef]" [value]="data"
+                          (onSelectionChange)="onSelectionChange(column.columnDef, data, $event)">
+                          {{ data[column.propertyName] }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </ng-container>
+
+                  <!-- <ng-container *ngSwitchCase="'checkbox'">
+                    <mat-checkbox formControlName="{{ column.columnDef }}" [checked]="this.form.get(column.columnDef)">
+                    </mat-checkbox>
+                  </ng-container> -->
+
+                  <!-- <ng-container *ngSwitchCase="'date'">
+                    <div fxLayout="row" style="align-items: center">
+                      <mat-form-field class="table-form-field" (click)="$event.stopPropagation()"
+                        [ngStyle]="column.formField.width" [appearance]="formFieldAppearence" [color]="formFieldColor">
+                        <input matInput type="text" formControlName="{{ column.columnDef }}" />
+                      </mat-form-field>
+                      <mat-error>
+                        <centura-mat-error [errors]="this.form.get(column.columnDef).errors"></centura-mat-error>
+                      </mat-error>
+                    </div>
+                  </ng-container> -->
+
+                  <!-- <ng-container *ngSwitchCase="'time-picker'">
+                    <ngb-timepicker (click)="$event.stopPropagation()" formControlName="{{ column.columnDef }}"
+                      [spinners]="false"></ngb-timepicker>
+                  </ng-container> -->
+
+                  <!-- <ng-container *ngSwitchCase="'date-picker'">
+                    <div fxLayout="row" style="align-items: center">
+                      <mat-form-field class="date-picker" (click)="$event.stopPropagation()"
+                        [ngStyle]="column.formField.width" [appearance]="formFieldAppearence" [color]="formFieldColor">
+                        <input matInput [matDatepicker]="picker" placeholder="Choose date"
+                          formControlName="{{ column.columnDef }}" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <mat-error>
+                        <centura-mat-error [errors]="this.form.get(column.columnDef).errors"></centura-mat-error>
+                      </mat-error>
+                    </div>
+                  </ng-container> -->
+                </ng-container>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <!-- Actions -->
+          <ng-container *ngIf="!isActionColumnHidden" matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <!-- Icons to display by default -->
+              <ng-container *ngIf="!row.isBeingEdited">
+                <mat-icon *ngIf="isViewable" class="action-icon" matTooltip="View details">visibility</mat-icon>
+
+                <mat-icon *ngIf="isEditable" class="action-icon" (click)="$event.stopPropagation(); onEdit(row)"
+                  matTooltip="Edit">edit</mat-icon>
+
+                <ng-container *ngIf="isDeletable" [ngSwitch]="row.status">
+                  <mat-icon *ngSwitchDefault class="action-icon" color="warn"
+                    (click)="$event.stopPropagation(); onDelete(row)" [matTooltip]="deleteIconText">delete</mat-icon>
+                  <mat-icon *ngSwitchCase="'D'" class="action-icon" color="accent"
+                    (click)="$event.stopPropagation(); onReActivate(row)" matTooltip="Re-activate">cached</mat-icon>
+                </ng-container>
+              </ng-container>
+
+              <!-- Icons to display if row is being edited -->
+              <ng-container *ngIf="row.isBeingEdited">
+                <mat-icon class="action-icon" (click)="$event.stopPropagation(); onCancel()" matTooltip="Cancel"
+                  color="warn">clear</mat-icon>
+                <mat-icon class="green-action-icon" (click)="$event.stopPropagation(); onSubmit(row)" matTooltip="Save">
+                  done</mat-icon>
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: false"></mat-header-row>
+          <ng-container *ngIf="isRowClickable">
+            <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClick(row)" style="cursor: pointer">
+            </mat-row>
+          </ng-container>
+          <ng-container *ngIf="!isRowClickable">
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </ng-container>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[18, 500, 1000]" showFirstLastButtons [pageSize]="500"></mat-paginator>
+      </div>
+    </div>
+  </form>
+</ng-template>

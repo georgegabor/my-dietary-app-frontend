@@ -26,10 +26,10 @@ const initialState: State = {
   providedIn: 'root',
 })
 export class ApiService extends StateService<State> {
-  gotBaseInfo$: Observable<any[]> = this.select((state) => state.gotBaseInfo);
-  gotBooks$: Observable<any[]> = this.select((state) => state.gotBooks);
-  gotCharacters$: Observable<any[]> = this.select((state) => state.gotCharacters);
-  gotHouses$: Observable<any[]> = this.select((state) => state.gotHouses);
+  gotBaseInfo$ = this.select((state) => state.gotBaseInfo);
+  gotBooks$ = this.select((state) => state.gotBooks);
+  gotCharacters$ = this.select((state) => state.gotCharacters);
+  gotHouses$ = this.select((state) => state.gotHouses);
 
   constructor(private readonly http: HttpClient) {
     super(initialState);
@@ -38,22 +38,13 @@ export class ApiService extends StateService<State> {
   }
 
   load() {
-    // this.http.get<any[]>(GOT_URL).subscribe(
-    //   (res) => this.setState({ gotBaseInfo: res }),
-    //   () => noop,
-    //   () => console.log(GOT_URL + ' completed')
-    // );
-    // this.http.get<any[]>(GOT_BOOKS_URL).subscribe((res) => this.setState({ gotBooks: res }));
-    // this.http.get<any[]>(GOT_CHARACTERS_URL).subscribe((res) => this.setState({ gotCharacters: res }));
-    // this.http.get<any[]>(GOT_HOUSES_URL).subscribe((res) => this.setState({ gotHouses: res }));
-
     forkJoin({
-      gotBaseInfo: this.http.get<any[]>(GOT_URL).pipe(tap(() => console.log('gotBaseInfo'))),
-      gotBooks: this.http.get<any[]>(GOT_BOOKS_URL).pipe(tap(() => console.log('gotBooks'))),
-      gotCharacters: this.http.get<any[]>(GOT_CHARACTERS_URL).pipe(tap(() => console.log('gotCharacters'))),
-      gotHouses: this.http.get<any[]>(GOT_HOUSES_URL).pipe(tap(() => console.log('gotHouses'))),
+      gotBaseInfo: this.http.get<any[]>(GOT_URL),
+      gotBooks: this.http.get<any[]>(GOT_BOOKS_URL),
+      gotCharacters: this.http.get<any[]>(GOT_CHARACTERS_URL),
+      gotHouses: this.http.get<any[]>(GOT_HOUSES_URL),
     })
-      .pipe(tap(() => console.log(this)))
-      .subscribe((res) => this.setState(res));
+      .pipe(tap((res) => this.setState(res)))
+      .subscribe();
   }
 }

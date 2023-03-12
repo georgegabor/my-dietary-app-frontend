@@ -1,0 +1,51 @@
+mat-header-cell:last-of-type {
+  justify-content: flex-end !important;
+  padding-right: 1.8% !important;
+  flex: 0 0 7% !important;
+}
+
+mat-cell:last-of-type {
+  justify-content: flex-end !important;
+  padding-right: 1% !important;
+  flex: 0 0 7% !important;
+}
+
+.controllers-container {
+  width: 100%;
+  padding: unset;
+}
+
+.row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.search-row {
+  mat-form-field {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    margin-right: 0.5%;
+    font-size: 1.4em;
+  }
+}
+
+.add-icon {
+  margin-right: 2%;
+}
+
+.toggle {
+  margin: 1%;
+  font-size: 1.2em;
+  min-width: 15rem;
+  max-width: 15rem;
+  mat-label,
+  p {
+    font-weight: 550 !important;
+  }
+}
+
+.label-before {
+  padding: 3% !important;
+  margin-left: 6%;
+  margin-right: 2%;
+}

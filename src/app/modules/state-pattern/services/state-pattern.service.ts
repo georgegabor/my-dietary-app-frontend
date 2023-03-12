@@ -1,22 +1,23 @@
+import { EditState } from './../models/EditState';
 import { Injectable } from '@angular/core';
 import { Context } from '../models/Context';
+import { CreateState } from '../models/CreateState';
 import { State } from '../models/State';
 
 @Injectable()
 export class StatePatternService {
   private _context: Context;
 
-  constructor() {}
-
-  setState<T extends State>(state: T) {
+  private _do<T extends State>(state: T) {
     this._context = new Context(state);
+    this._context.execute();
   }
 
-  request1() {
-    this._context.request1();
+  create() {
+    this._do(new CreateState());
   }
 
-  request2() {
-    this._context.request2();
+  edit() {
+    this._do(new EditState());
   }
 }

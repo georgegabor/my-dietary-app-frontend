@@ -13,7 +13,5 @@ export abstract class State {
     this.context = context;
   }
 
-  public abstract handle1(): void;
-
-  public abstract handle2(): void;
+  public abstract execute(): void;
 }

@@ -13,8 +13,13 @@
       <mat-card class="dashboard-card argyle">
         <mat-card-header>
           <mat-card-title>
-            {{card1.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card1.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -24,7 +29,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <pre>{{ state.gotBaseInfo | json}}</pre>
+          <pre>{{ state.gotBaseInfo | json }}</pre>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -33,8 +38,13 @@
       <mat-card class="dashboard-card linear-gradient">
         <mat-card-header>
           <mat-card-title>
-            {{card2.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card2.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -44,7 +54,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <pre>{{ state.gotBooks | json}}</pre>
+          <pre>{{ state.gotBooks | json }}</pre>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -53,8 +63,13 @@
       <mat-card class="dashboard-card carbon-fibre">
         <mat-card-header>
           <mat-card-title>
-            {{card3.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card3.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -64,7 +79,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <pre>{{ state.gotCharacters | json}}</pre>
+          <pre>{{ state.gotCharacters | json }}</pre>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -73,8 +88,13 @@
       <mat-card class="dashboard-card upholstery">
         <mat-card-header>
           <mat-card-title>
-            {{card4.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            {{ card4.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -84,7 +104,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <pre>{{ state.gotHouses | json}}</pre>
+          <pre>{{ state.gotHouses | json }}</pre>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

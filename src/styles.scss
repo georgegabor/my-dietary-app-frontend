@@ -1,43 +1,43 @@
-// @use '@angular/material' as mat;
-// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@use '@angular/material' as mat;
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 // // @import './assets/style/centura.material.css';
 // // @import './assets/style/centura.component.css';
 // // @import 'scss/myTheme';
 // // @import '~material-design-icons/iconfont/material-icons.css';
 // // @import './assets/fonts/Roboto/google-fonts.css';
-// // @import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 // // Custom Theming for Angular Material
 // // For more information: https://material.angular.io/guide/theming
 // // Plus imports for other components in your app.
 
 // // Include the common styles for Angular Material. We include this here so that you only have to load a single css file for Angular Material in your app.
 // // Be sure that you only ever include this mixin once!
-// @include mat.core();
+@include mat.core();
 
 // // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // // hue. Available color palettes: https://material.io/design/color/
-// $centura-app-gui-primary: mat.define-palette(mat.$yellow-palette);
-// $centura-app-gui-accent: mat.define-palette(
-//   mat.$indigo-palette,
-//   A200,
-//   A100,
-//   A400
-// );
+$centura-app-gui-primary: mat.define-palette(mat.$yellow-palette);
+$centura-app-gui-accent: mat.define-palette(
+  mat.$indigo-palette,
+  A200,
+  A100,
+  A400
+);
 
 * {
   transition: all 1s;
 }
 
 // // The warn palette is optional (defaults to red).
-// $centura-app-gui-warn: mat.define-palette(mat.$red-palette);
+$centura-app-gui-warn: mat.define-palette(mat.$red-palette);
 
 // // Create the theme object (a Sass map containing all of the palettes).
-// $centura-app-gui-theme: mat.define-light-theme(
-//   $centura-app-gui-primary,
-//   $centura-app-gui-accent,
-//   $centura-app-gui-warn
-// );
+$centura-app-gui-theme: mat.define-light-theme(
+  $centura-app-gui-primary,
+  $centura-app-gui-accent,
+  $centura-app-gui-warn
+);
 
 // // Include theme styles for core and each component used in your app.
 // // Alternatively, you can import and @include the theme mixins for each component
@@ -47,591 +47,591 @@
 // /* You can add global styles to this file, and also import other style files */
 // // @import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
 
-// $primary: rgb(255, 233, 58);
-
-// .container {
-//   width: 100%;
-//   margin: 2%;
-// }
-
-// a {
-//   color: black;
-//   text-decoration: none;
-//   font-family: open-sans, Helvetica, Arial, sans-serif;
-// }
-// a.logo {
-//   font-weight: bold;
-// }
-
-// nav {
-//   float: right;
-
-//   ul {
-//     list-style-type: none;
-//     margin: 0;
-//     display: flex;
-
-//     li a {
-//       padding: 1em;
-
-//       &:hover {
-//         background: darken($primary, 10%);
-//       }
-//     }
-//   }
-// }
-
-// h1 {
-//   margin-top: 2em;
-// }
-
-// html {
-//   font-size: 60%; // adjust the size with percentage here.
-//   height: 100%;
-// }
-
-// body {
-//   height: 100%;
-//   margin: 0;
-//   font-family: Arial, Helvetica, sans-serif, 'Helvetica Neue', sans-serif;
-//   // overflow-y: auto;
-//   background-color: #fafafa;
-// }
-
-// .form-page-title {
-//   margin-top: 1em;
-//   margin-bottom: 0.5em;
-//   margin-left: 0.5em;
-// }
-
-// div.container {
-//   margin: 0px 0px;
-// }
-
-// .fill-remaining-space {
-//   flex: 1 1 auto;
-// }
-
-// form.normal-form {
-//   margin: 10px;
-// }
-
-// .controllers-container {
-//   width: 100%;
-//   padding: 5%;
-// }
-
-// .controllers-container-last {
-//   width: 100%;
-//   margin-top: 20px;
-// }
-
-// .controllers-container > * {
-//   width: 100%;
-// }
-
-// .add-bottom-padding {
-//   padding-bottom: 10px;
-// }
-
-// label {
-//   font-weight: 500;
-// }
-
-// mat-radio-group mat-radio-button {
-//   margin-left: 5px;
-// }
-
-// .button-row button {
-//   margin: 5px;
-// }
-
-// .mandant-search-button {
-//   margin-left: 10px;
-//   padding-left: 10px;
-// }
-
-// snack-bar-container.success {
-//   background-color: rgb(109, 138, 65);
-//   color: white;
-// }
-
-// snack-bar-container.warn {
-//   background-color: rgb(161, 56, 56);
-//   color: white;
-// }
-
-// .mat-snack-bar-container {
-//   min-width: 90% !important;
-//   max-width: 90% !important;
-//   font-size: 1.3rem !important;
-//   padding: 0.5%;
-//   font-weight: lighter;
-// }
-
-// mat-dialog-actions {
-//   justify-content: center;
-// }
-
-// .hide {
-//   display: none;
-// }
-
-// mat-footer-row mat-footer-cell {
-//   justify-content: center;
-//   font-style: italic;
-// }
-
-// .btn-dialog-close {
-//   width: 45px;
-//   min-width: 0px !important;
-//   height: 40px;
-//   padding: 0px !important;
-//   border: none;
-//   background: none;
-//   margin-top: 1%;
-// }
-
-// .confirm-dialog-container .mat-dialog-container {
-//   border-radius: 0.25em 0.25em 0.4em 0.4em;
-//   padding: 0px;
-// }
-// .confirm-dialog-container .content-container {
-//   margin: 5px 5px 15px 5px;
-//   color: #8f9cb5;
-//   display: flex;
-// }
-// .confirm-dialog-container #close-icon {
-//   margin-left: auto;
-//   order: 2;
-//   font-weight: bolder;
-//   margin-top: 5%;
-//   padding: 5%;
-//   font-size: small;
-// }
-// .confirm-dialog-container #close-icon:hover {
-//   cursor: pointer;
-// }
-
-// .confirm-dialog-container #no-button {
-//   height: 50px;
-//   width: 50%;
-//   background-color: #b6bece;
-//   color: white;
-//   border-radius: 0px;
-// }
-
-// .confirm-dialog-container #yes-button {
-//   height: 50px;
-//   width: 50%;
-//   background-color: #fc7169;
-//   color: white;
-//   border-radius: 0px;
-// }
-
-// .confirm-dialog-container span.content-span {
-//   padding: 35px 16px;
-//   text-align: center;
-//   font-size: 20px;
-// }
-
-// search-div {
-//   margin: 10px;
-// }
-// .search-form-clear-button {
-//   margin-left: 10px;
-// }
-
-// button.centura-button {
-//   color: black;
-//   background-color: #ffd740;
-//   margin: 5px;
-// }
-
-// button.centura-button.first-button {
-//   margin-left: 0px;
-// }
-
-// .navbar-custom {
-//   background-color: #ffd740;
-// }
-// /* change the brand and text color */
-// .navbar-custom .navbar-brand,
-// .navbar-custom .navbar-text {
-//   color: rgba(000, 000, 000, 1);
-// }
-// /* change the link color */
-// .navbar-custom .navbar-nav .nav-link {
-//   color: rgba(000, 000, 000, 1);
-// }
-// /* change the color of active or hovered links */
-// .navbar-custom .nav-item.active .nav-link,
-// .navbar-custom .nav-item:hover .nav-link {
-//   color: #fff;
-// }
-
-// // mat-tab-group's ink-bar
-// .mat-ink-bar {
-//   transition: none !important;
-// }
-
-// .mat-tab-label-active {
-//   color: white;
-//   background-color: #292828;
-// }
-
-// .mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label.ng-star-inserted {
-//   opacity: 1;
-// }
-
-// .mat-tooltip {
-//   font-size: 1.2em;
-// }
-
-// button:focus:not(:focus-visible) {
-//   outline: 0;
-//   box-shadow: none;
-//   border: none;
-// }
-
-// button,
-// mat-raised-button:hover {
-//   transform: translateY(-1px);
-// }
-
-// .mat-menu-panel.toolbar-menu {
-//   background: $primary !important;
-//   box-shadow: none;
-//   border: none;
-
-//   a {
-//     color: black;
-//   }
-// }
-
-// // ************************* Form Fields **************************************
-
-// mat-label {
-//   /* font-weight: bold;*/
-//   font-size: 1.25em;
-// }
-
-// .mat-form-field-appearance-outline .mat-form-field-infix {
-//   padding: unset;
-//   /*
-//   position: relative; */
-//   /* bottom: 0.5em; */
-//   align-items: center;
-// }
-
-// .mat-form-field-appearance-outline .mat-form-field-prefix,
-// .mat-form-field-appearance-outline .mat-form-field-suffix {
-//   top: 0.4em !important;
-// }
-
-// .mat-form-field-infix {
-//   padding-top: 1.2% !important;
-//   padding-bottom: 5% !important;
-//   display: flex !important;
-// }
-
-// mat-form-field.table-form-field {
-//   .mat-form-field-infix {
-//     padding-top: 0% !important;
-//     padding-bottom: 7% !important;
-//   }
-
-//   // display: flex;
-//   justify-content: space-between;
-// }
-
-// .mat-form-field-appearance-outline .mat-form-field-flex {
-//   align-items: flex-start;
-// }
-
-// .mat-form-field-appearance-outline .mat-form-field-wrapper {
-//   padding-bottom: 0% !important;
-// }
-
-// .mat-form-field-label {
-//   color: black !important;
-// }
-// .mat-form-field-ripple {
-//   background-color: black !important;
-// }
-// .mat-form-field-label,
-// .mat-form-field-label.mat-focused,
-// .mat-form-field.mat-focused.matform-field-should-float {
-//   color: black !important;
-// }
-// .mat-form-field-underline,
-// .mat-form-field-underline.mat-focused {
-//   background-color: black !important;
-// }
-
-// .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-//   color: black;
-//   // border-radius: 12px !important;
-// }
-
-// // .mat-form-field-outline-start,
-// // .mat-form-field-outline-end {
-// //   border-radius: 12px !important;
-// // }
-
-// .mat-form-field-wrapper {
-//   background-color: white;
-//   border-radius: 6px !important;
-// }
-
-// .mat-input-element {
-//   caret-color: black !important;
-// }
-
-// .dialog-form-title {
-//   font-size: 1.5rem;
-// }
-
-// .title {
-//   margin-bottom: 2%;
-// }
-
-// .mat-tab-label {
-//   font-size: 1.2rem;
-// }
-
-// ::ng-deep .mat-datepicker-content .mat-calendar {
-//   width: unset !important;
-//   height: unset !important;
-// }
-
-// input.ngb-tp-input.form-control {
-//   font-size: 1.2em;
-// }
-
-// input.ngb-tp-input.form-control:hover,
-// input.ngb-tp-input.form-control:focus {
-//   border: 2px solid black;
-//   -webkit-box-shadow: none;
-//   box-shadow: none;
-// }
-
-// // div.ngb-tp-input-container.ngb-tp-hour {
-// //   color: red !important;
-// // }
-
-// // Search-row above table
-
-// .search-row {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// //****************************** Table **************************************
-
-// .mat-header-row {
-//   min-height: 5rem;
-//   max-height: 5rem;
-// }
-
-// .mat-header-cell {
-//   font-size: 1.3em;
-//   color: black;
-//   background-color: white;
-//   padding-left: 0.5%;
-// }
-
-// mat-header-cell.last-column {
-//   justify-content: flex-start !important;
-//   padding-right: 1.8% !important;
-//   flex: 0 0 7% !important;
-// }
-
-// mat-cell.last-column {
-//   justify-content: flex-start !important;
-//   padding-right: 1% !important;
-//   flex: 0 0 7% !important;
-// }
-
-// .mat-cell {
-//   font-size: 1.2em;
-//   padding-left: 0.5%;
-// }
-
-// .mat-row {
-//   min-height: 3.9rem;
-//   max-height: 3.9rem;
-//   display: flex;
-//   align-items: flex-start;
-// }
-
-// .mat-row:hover {
-//   background-color: #e0e0e0;
-// }
-
-// mat-row:nth-child(even) {
-//   background-color: #f2f2f2;
-// }
-
-// // In case arrow should be more visible
-// .mat-sort-header-arrow {
-//   opacity: 1 !important;
-//   transform: translateY(0px) !important;
-//   color: #888181 !important;
-// }
-
-// .table {
-//   vertical-align: middle;
-//   width: auto;
-//   overflow-y: unset !important;
-//   // margin-top: 2em;
-//   // padding: 0.2em;
-//   // box-shadow: 0 1px 1px #817b7b;
-//   // background-color: #e2e2e2;
-// }
-
-// .mat-drawer-container {
-//   min-height: 100%;
-//   margin-bottom: -2.5rem;
-// }
-
-// .mat-drawer-content {
-//   overflow-y: hidden !important;
-//   overflow-y: unset !important;
-
-//   scrollbar-width: none; /* Firefox */
-//   -ms-overflow-style: none; /* Internet Explorer 10+ */
-// }
-
-// .mat-drawer-content::-webkit-scrollbar {
-//   width: 0;
-//   height: 0;
-// }
-
-// .mat-tab-body-content {
-//   overflow-y: hidden !important;
-// }
-
-// // .mat-column-actions {
-// //   flex: 0 0 7%;
-// // }
-
-// .tab-icon {
-//   color: red;
-//   transform: scale(0.7);
-// }
-
-// #mark {
-//   color: red;
-//   transform: scale(1.33);
-//   margin-left: 0.5rem;
-//   font-weight: 666; // The Devil's mark :-)
-// }
-
-// .clear-span {
-//   margin-left: 0.5rem;
-//   margin-right: 0.5rem;
-//   transform: scale(1);
-// }
-
-// .clear-span:hover {
-//   cursor: pointer;
-// }
-
-// .action-icon,
-// .green-action-icon {
-//   transform: scale(0.7);
-// }
-
-// .green-action-icon {
-//   color: rgb(137, 196, 50);
-// }
-
-// .mat-icon-button,
-// .action-button {
-//   transform: scale(0.7);
-// }
-
-// .search-div {
-//   margin: 10px;
-// }
-
-// .search-form-field {
-//   width: 80%;
-//   margin-left: 10px;
-//   padding: 5px 10px;
-//   background-color: #f5f5f5;
-//   border-radius: 5px;
-// }
-
-// .mat-select-length-override {
-//   max-height: 50vh !important;
-// }
-
-// .no-data {
-//   margin: 2%;
-// }
-
-// .button {
-//   font-size: 1.2em;
-//   font-weight: bold;
-//   height: 2.7em;
-//   width: auto;
-// }
-
-// .button-row {
-//   margin-left: 2%;
-// }
-
-// .mat-toolbar {
-//   position: sticky;
-//   position: -webkit-sticky; /* For macOS/iOS Safari */
-//   top: 0;
-//   z-index: 10;
-//   max-height: 5rem;
-//   min-height: 7rem;
-// }
-
-// .toolbar {
-//   display: flex;
-//   min-height: 3.5rem;
-//   max-height: 3.5rem;
-// }
+$primary: rgb(255, 233, 58);
+
+.container {
+  width: 100%;
+  margin: 2%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-family: open-sans, Helvetica, Arial, sans-serif;
+}
+a.logo {
+  font-weight: bold;
+}
+
+nav {
+  float: right;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+
+    li a {
+      padding: 1em;
+
+      &:hover {
+        background: darken($primary, 10%);
+      }
+    }
+  }
+}
+
+h1 {
+  margin-top: 2em;
+}
+
+html {
+  font-size: 60%; // adjust the size with percentage here.
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif, 'Helvetica Neue', sans-serif;
+  // overflow-y: auto;
+  background-color: #fafafa;
+}
+
+.form-page-title {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+}
+
+div.container {
+  margin: 0px 0px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+form.normal-form {
+  margin: 10px;
+}
+
+.controllers-container {
+  width: 100%;
+  padding: 5%;
+}
+
+.controllers-container-last {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.controllers-container > * {
+  width: 100%;
+}
+
+.add-bottom-padding {
+  padding-bottom: 10px;
+}
+
+label {
+  font-weight: 500;
+}
+
+mat-radio-group mat-radio-button {
+  margin-left: 5px;
+}
+
+.button-row button {
+  margin: 5px;
+}
+
+.mandant-search-button {
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+snack-bar-container.success {
+  background-color: rgb(109, 138, 65);
+  color: white;
+}
+
+snack-bar-container.warn {
+  background-color: rgb(161, 56, 56);
+  color: white;
+}
+
+.mat-snack-bar-container {
+  min-width: 90% !important;
+  max-width: 90% !important;
+  font-size: 1.3rem !important;
+  padding: 0.5%;
+  font-weight: lighter;
+}
+
+mat-dialog-actions {
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
+
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+  font-style: italic;
+}
+
+.btn-dialog-close {
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+  border: none;
+  background: none;
+  margin-top: 1%;
+}
+
+.confirm-dialog-container .mat-dialog-container {
+  border-radius: 0.25em 0.25em 0.4em 0.4em;
+  padding: 0px;
+}
+.confirm-dialog-container .content-container {
+  margin: 5px 5px 15px 5px;
+  color: #8f9cb5;
+  display: flex;
+}
+.confirm-dialog-container #close-icon {
+  margin-left: auto;
+  order: 2;
+  font-weight: bolder;
+  margin-top: 5%;
+  padding: 5%;
+  font-size: small;
+}
+.confirm-dialog-container #close-icon:hover {
+  cursor: pointer;
+}
+
+.confirm-dialog-container #no-button {
+  height: 50px;
+  width: 50%;
+  background-color: #b6bece;
+  color: white;
+  border-radius: 0px;
+}
+
+.confirm-dialog-container #yes-button {
+  height: 50px;
+  width: 50%;
+  background-color: #fc7169;
+  color: white;
+  border-radius: 0px;
+}
+
+.confirm-dialog-container span.content-span {
+  padding: 35px 16px;
+  text-align: center;
+  font-size: 20px;
+}
+
+search-div {
+  margin: 10px;
+}
+.search-form-clear-button {
+  margin-left: 10px;
+}
+
+button.centura-button {
+  color: black;
+  background-color: #ffd740;
+  margin: 5px;
+}
+
+button.centura-button.first-button {
+  margin-left: 0px;
+}
+
+.navbar-custom {
+  background-color: #ffd740;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(000, 000, 000, 1);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(000, 000, 000, 1);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #fff;
+}
+
+// mat-tab-group's ink-bar
+.mat-ink-bar {
+  transition: none !important;
+}
+
+.mat-tab-label-active {
+  color: white;
+  background-color: #292828;
+}
+
+.mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label.ng-star-inserted {
+  opacity: 1;
+}
+
+.mat-tooltip {
+  font-size: 1.2em;
+}
+
+button:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+  border: none;
+}
+
+button,
+mat-raised-button:hover {
+  transform: translateY(-1px);
+}
+
+.mat-menu-panel.toolbar-menu {
+  background: $primary !important;
+  box-shadow: none;
+  border: none;
+
+  a {
+    color: black;
+  }
+}
+
+// ************************* Form Fields **************************************
+
+mat-label {
+  /* font-weight: bold;*/
+  font-size: 1.25em;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: unset;
+  /*
+  position: relative; */
+  /* bottom: 0.5em; */
+  align-items: center;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-prefix,
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0.4em !important;
+}
+
+.mat-form-field-infix {
+  padding-top: 1.2% !important;
+  padding-bottom: 5% !important;
+  display: flex !important;
+}
+
+mat-form-field.table-form-field {
+  .mat-form-field-infix {
+    padding-top: 0% !important;
+    padding-bottom: 7% !important;
+  }
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  align-items: flex-start;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  padding-bottom: 0% !important;
+}
+
+.mat-form-field-label {
+  color: black !important;
+}
+.mat-form-field-ripple {
+  background-color: black !important;
+}
+.mat-form-field-label,
+.mat-form-field-label.mat-focused,
+.mat-form-field.mat-focused.matform-field-should-float {
+  color: black !important;
+}
+.mat-form-field-underline,
+.mat-form-field-underline.mat-focused {
+  background-color: black !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: black;
+  // border-radius: 12px !important;
+}
+
+// .mat-form-field-outline-start,
+// .mat-form-field-outline-end {
+//   border-radius: 12px !important;
+// }
+
+.mat-form-field-wrapper {
+  background-color: white;
+  border-radius: 6px !important;
+}
+
+.mat-input-element {
+  caret-color: black !important;
+}
+
+.dialog-form-title {
+  font-size: 1.5rem;
+}
+
+.title {
+  margin-bottom: 2%;
+}
+
+.mat-tab-label {
+  font-size: 1.2rem;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar {
+  width: unset !important;
+  height: unset !important;
+}
+
+input.ngb-tp-input.form-control {
+  font-size: 1.2em;
+}
+
+input.ngb-tp-input.form-control:hover,
+input.ngb-tp-input.form-control:focus {
+  border: 2px solid black;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+// div.ngb-tp-input-container.ngb-tp-hour {
+//   color: red !important;
+// }
+
+// Search-row above table
+
+.search-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//****************************** Table **************************************
+
+.mat-header-row {
+  min-height: 5rem;
+  max-height: 5rem;
+}
+
+.mat-header-cell {
+  font-size: 1.3em;
+  color: black;
+  background-color: white;
+  padding-left: 0.5%;
+}
+
+mat-header-cell.last-column {
+  justify-content: flex-start !important;
+  padding-right: 1.8% !important;
+  flex: 0 0 7% !important;
+}
+
+mat-cell.last-column {
+  justify-content: flex-start !important;
+  padding-right: 1% !important;
+  flex: 0 0 7% !important;
+}
+
+.mat-cell {
+  font-size: 1.2em;
+  padding-left: 0.5%;
+}
+
+.mat-row {
+  min-height: 3.9rem;
+  max-height: 3.9rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.mat-row:hover {
+  background-color: #e0e0e0;
+}
+
+mat-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+// In case arrow should be more visible
+.mat-sort-header-arrow {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+  color: #888181 !important;
+}
+
+.table {
+  vertical-align: middle;
+  width: auto;
+  overflow-y: unset !important;
+  // margin-top: 2em;
+  // padding: 0.2em;
+  // box-shadow: 0 1px 1px #817b7b;
+  // background-color: #e2e2e2;
+}
+
+.mat-drawer-container {
+  min-height: 100%;
+  margin-bottom: -2.5rem;
+}
+
+.mat-drawer-content {
+  overflow-y: hidden !important;
+  overflow-y: unset !important;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.mat-drawer-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.mat-tab-body-content {
+  overflow-y: hidden !important;
+}
+
+// .mat-column-actions {
+//   flex: 0 0 7%;
+// }
+
+.tab-icon {
+  color: red;
+  transform: scale(0.7);
+}
+
+#mark {
+  color: red;
+  transform: scale(1.33);
+  margin-left: 0.5rem;
+  font-weight: 666; // The Devil's mark :-)
+}
+
+.clear-span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  transform: scale(1);
+}
+
+.clear-span:hover {
+  cursor: pointer;
+}
+
+.action-icon,
+.green-action-icon {
+  transform: scale(0.7);
+}
+
+.green-action-icon {
+  color: rgb(137, 196, 50);
+}
+
+.mat-icon-button,
+.action-button {
+  transform: scale(0.7);
+}
+
+.search-div {
+  margin: 10px;
+}
+
+.search-form-field {
+  width: 80%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.mat-select-length-override {
+  max-height: 50vh !important;
+}
+
+.no-data {
+  margin: 2%;
+}
+
+.button {
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 2.7em;
+  width: auto;
+}
+
+.button-row {
+  margin-left: 2%;
+}
+
+.mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0;
+  z-index: 10;
+  max-height: 5rem;
+  min-height: 7rem;
+}
+
+.toolbar {
+  display: flex;
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+}
 
 // // **************** Paginator ***************
 
-// .mat-paginator-outer-container {
-//   min-height: 4.5rem;
-//   max-height: 4.5rem;
-// }
+.mat-paginator-outer-container {
+  min-height: 4.5rem;
+  max-height: 4.5rem;
+}
 
-// .mat-paginator-container {
-//   align-items: baseline !important;
-//   flex-wrap: unset !important;
-// }
+.mat-paginator-container {
+  align-items: baseline !important;
+  flex-wrap: unset !important;
+}
 
-// .mat-form-field-appearance-legacy .mat-form-field-wrapper {
-//   padding-bottom: 0;
-// }
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
 
-// .mat-form-field-appearance-legacy .mat-form-field-underline {
-//   height: 0 !important;
-// }
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0 !important;
+}
 
-// .mat-form-field-appearance-legacy .mat-form-field-ripple {
-//   display: none;
-// }
+.mat-form-field-appearance-legacy .mat-form-field-ripple {
+  display: none;
+}
 
-// .mat-paginator-page-size-label {
-//   font-size: 1.3rem;
-// }
+.mat-paginator-page-size-label {
+  font-size: 1.3rem;
+}
 
-// .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-//   color: black !important;
-// }
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: black !important;
+}
 
-// .success-snackbar {
-//   background: #1fcd98;
-//   white-space: pre-wrap;
-// }
+.success-snackbar {
+  background: #1fcd98;
+  white-space: pre-wrap;
+}

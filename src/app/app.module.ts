@@ -24,6 +24,7 @@ import { ChangeDetectionProfilerService } from './shared/services/change-detecti
 import { LoaderInterceptor } from './core/centura-loader.inteceptor';
 import { CenturaErrorInterceptor } from './core/centura-error.interceptor';
 import { StatePatternComponent } from './modules/state-pattern/components/state-pattern/state-pattern.component';
+import { EditableTableComponent } from './shared/components/editable-table/editable-table/editable-table.component';
 
 const original = DefaultValueAccessor.prototype.registerOnChange;
 
@@ -60,6 +61,7 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     MatSortModule,
     NostroAccountModule,
   ],
+  exports: [],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
