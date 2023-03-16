@@ -1,3 +1,4 @@
+import { TableExtendsSubjectComponent } from './modules/table-extends-subject/table-extends-subject.component';
 import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplicationRef, NgModule } from '@angular/core';
@@ -25,6 +26,8 @@ import { LoaderInterceptor } from './core/centura-loader.inteceptor';
 import { CenturaErrorInterceptor } from './core/centura-error.interceptor';
 import { StatePatternComponent } from './modules/state-pattern/components/state-pattern/state-pattern.component';
 import { EditableTableComponent } from './shared/components/editable-table/editable-table/editable-table.component';
+import { ReactiveFormComponent } from './modules/reactive-form/reactive-form.component';
+import { ReactiveComponentComponent } from './modules/reactive-component/reactive-component.component';
 
 const original = DefaultValueAccessor.prototype.registerOnChange;
 
@@ -50,6 +53,9 @@ DefaultValueAccessor.prototype.registerOnChange = function (fn) {
     MemoryGameComponent,
     SimpleTableComponent,
     StatePatternComponent,
+    ReactiveFormComponent,
+    ReactiveComponentComponent,
+    TableExtendsSubjectComponent,
   ],
   imports: [
     HttpClientModule,

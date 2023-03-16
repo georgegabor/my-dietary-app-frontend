@@ -1,0 +1,11 @@
+<p>
+  table-extends-subject works!
+</p>
+
+<ng-container *ngIf="(state$ | async) as state">
+
+  <pre> {{ state |json }}</pre>
+
+  <button type="button" class="pag-button" (click)="changePage(state$.value.pageActual - 1)"> Change </button>
+
+</ng-container>

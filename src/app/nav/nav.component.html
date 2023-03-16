@@ -31,8 +31,10 @@
   <mat-sidenav mode="side" opened role="navigation" #sidenav>
     <mat-nav-list>
       <mat-list-item routerLink="./dashboard" routerLinkActive="active">Dashboard</mat-list-item>
-
       <mat-list-item routerLink="./events" routerLinkActive="active">Event</mat-list-item>
+      <mat-list-item routerLink="./reactive-form" routerLinkActive="active">Reactive
+        form</mat-list-item>
+      <mat-list-item routerLink="./reactive-component" routerLinkActive="active">Reactive component</mat-list-item>
       <mat-list-item routerLink="./food" routerLinkActive="active">Food</mat-list-item>
       <mat-list-item routerLink="./table" routerLinkActive="active">Table</mat-list-item>
       <mat-list-item routerLink="./playground" routerLinkActive="active">Playground</mat-list-item>
@@ -40,12 +42,15 @@
       <mat-list-item routerLink="./ngZone" routerLinkActive="active">ngZone</mat-list-item>
       <mat-list-item routerLink="./nostro" routerLinkActive="active">Nostro</mat-list-item>
       <mat-list-item routerLink="./memory" routerLinkActive="active">Memory</mat-list-item>
-      <mat-list-item routerLink="./simpleTable" routerLinkActive="active">Simple Table</mat-list-item>
-      <mat-list-item routerLink="./statepattern" routerLinkActive="active">State Pattern</mat-list-item>
+      <mat-list-item routerLink="./simpleTable" routerLinkActive="active">Simple
+        Table</mat-list-item>
+      <mat-list-item routerLink="./statepattern" routerLinkActive="active">State
+        Pattern</mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="content" >
+    <div class="content">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

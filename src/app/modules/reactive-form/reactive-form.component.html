@@ -1,0 +1,25 @@
+<ng-container *ngIf="(vm$ |async) as vm; else loading">
+  <form [formGroup]="vm.form">
+
+    <div>
+      <ng-container *ngFor="let control of vm.keys">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ control | titlecase}}</mat-label>
+          <input type="text" matInput formControlName="{{control}}"/>
+        </mat-form-field>
+      </ng-container>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button
+        (click)="onSubmit(vm.form)"
+        role="none"
+        class="btn btn-primary">
+        Save
+      </button>
+    </div>
+
+  </form>
+</ng-container>
+
+<ng-template #loading>...loading</ng-template>

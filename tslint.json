@@ -36,7 +36,12 @@
     "member-ordering": [
       true,
       {
-        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
       }
     ],
 
@@ -125,7 +130,13 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
 
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "require-const-for-all-caps"]
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "require-const-for-all-caps"
+    ]
   },
   "rulesDirectory": ["codelyzer"]
 }

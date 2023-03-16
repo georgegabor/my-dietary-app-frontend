@@ -1,3 +1,5 @@
+import { ReactiveComponentComponent } from './modules/reactive-component/reactive-component.component';
+import { ReactiveFormComponent } from './modules/reactive-form/reactive-form.component';
 import { StatePatternComponent } from './modules/state-pattern/components/state-pattern/state-pattern.component';
 import { SimpleTableComponent } from './modules/simple-table/simple-table/simple-table.component';
 import { NostroaccountListComponent } from './modules/nostro-account/components/nostroaccount/nostroaccount-list/nostroaccount-list.component';
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'table', component: TableComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'events', component: FormComponent },
+      { path: 'reactive-form', component: ReactiveFormComponent },
+      { path: 'reactive-component', component: ReactiveComponentComponent },
       { path: 'food', component: FoodListComponent },
       { path: 'food/add', component: FoodFormComponent },
       { path: 'playground', component: PlaygroundComponent },
