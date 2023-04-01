@@ -1,7 +1,25 @@
 import { outerActions, TableAction } from './../table-extends-subject/table-extends-subject.component';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { BehaviorSubject, filter, mergeAll, NEVER, Subject, take, tap, timer, windowToggle } from 'rxjs';
+import {
+  asyncScheduler,
+  BehaviorSubject,
+  delay,
+  EMPTY,
+  expand,
+  filter,
+  map,
+  mergeAll,
+  NEVER,
+  of,
+  Subject,
+  take,
+  tap,
+  timer,
+  windowToggle,
+} from 'rxjs';
 import { InnerActions, TableExtendsSubjectComponent } from '../table-extends-subject/table-extends-subject.component';
+
+const T = 5;
 
 @Component({
   selector: 'app-reactive-component',
@@ -12,7 +30,7 @@ import { InnerActions, TableExtendsSubjectComponent } from '../table-extends-sub
     </div>
 
     <div style="display: flex; justify-content: center;">
-      <button mat-button color="primary" (click)="on$.next({})">ON</button>
+      <button mat-button color="primary" (click)="on$.next()">ON</button>
       <button mat-button color="primary" (click)="off$.next()">OFF</button>
     </div>
   `,
@@ -28,9 +46,24 @@ export class ReactiveComponentComponent implements AfterViewInit {
         mergeAll()
       )
       .subscribe(console.log);
+
+    // const powersOfTwo = this.on$.pipe(
+    //   map(() => 1),
+    //   expand((x) => of(2 * x).pipe(delay(1000))),
+    //   take(10)
+    // );
+    // powersOfTwo.subscribe((x) => console.log(x));
+
+    const getCharacters$ = (retryCount: number = 0) => of(retryCount);
+
+    const charactersWithRetry$ = getCharacters$().pipe(
+      expand((result) => (result < 5 ? getCharacters$(result + 1) : EMPTY), Infinity, asyncScheduler)
+    );
+
+    charactersWithRetry$.subscribe(console.log);
   }
 
-  on$ = new BehaviorSubject<any>({});
+  on$ = new Subject<void>();
   off$ = new Subject<void>();
 
   @ViewChild(TableExtendsSubjectComponent)
