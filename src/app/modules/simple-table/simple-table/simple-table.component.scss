@@ -1,14 +1,4 @@
-table {
-  width: 100%;
-}
-
-.mat-column-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.mat-column-name {
-  padding-left: 16px;
+.center {
+  display: flex;
+  justify-content: center;
 }
