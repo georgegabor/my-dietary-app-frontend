@@ -1,25 +1,27 @@
-<ng-container *ngIf="(vm$ |async) as vm; else loading">
-  <form [formGroup]="vm.form">
+<ng-container *ngIf="(formService.formSub$ | async) as f; else loading">
+  <form [formGroup]="f.form">
 
     <div>
-      <ng-container *ngFor="let control of vm.keys">
-        <mat-form-field appearance="outline">
+      <ng-container *ngFor="let control of f.keys">
+        <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>{{ control | titlecase}}</mat-label>
-          <input type="text" matInput formControlName="{{control}}"/>
+          <input type="text" matInput formControlName="{{control}}" (input)="onInputChange(control, f.form)"/>
         </mat-form-field>
       </ng-container>
     </div>
 
     <div class="d-flex justify-content-between">
-      <button
-        (click)="onSubmit(vm.form)"
-        role="none"
-        class="btn btn-primary">
+      <button (click)="onSubmit(f.form)" role="none" class="btn btn-primary">
         Save
       </button>
     </div>
 
+    <hr>
+
   </form>
+
 </ng-container>
 
 <ng-template #loading>...loading</ng-template>
+
+<app-form2></app-form2>

@@ -1,17 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {
-  asapScheduler,
-  asyncScheduler,
-  combineLatest,
-  generate,
-  map,
-  mergeMap,
-  Observable,
-  share,
-  toArray,
-} from 'rxjs';
-import { ajax } from 'rxjs/ajax';
+import { ReactiveFormService } from './reactive-form.service';
 
 export const gameSize = 5;
 const createGameObject = (x, y) => ({ x, y });
@@ -82,47 +71,45 @@ const sameOnlyWithFilter = students.filter(isWoman).filter(isFromUnionCollege);
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReactiveFormComponent {
-  constructor(private fb: FormBuilder) {
-    console.log(result);
-    console.log(womenAndFromUnionCollege);
-    console.log(fromUnionCollegeAndWoman);
-    console.log(sameOnlyWithFilter);
+  constructor(private fb: FormBuilder, public formService: ReactiveFormService) {
+    // console.log(result);
+    // console.log(womenAndFromUnionCollege);
+    // console.log(fromUnionCollegeAndWoman);
+    // console.log(sameOnlyWithFilter);
+
+    formService.getPosts();
   }
-
-  post$ = ajax.getJSON('https://api.github.com/users/google').pipe(share());
-  keys$: Observable<any[]> = this.post$.pipe(map((post) => Object.keys(post)));
-  form$: Observable<FormGroup> = this.post$.pipe(map((post) => this.fb.group(post)));
-
-  vm$: Observable<any> = combineLatest({
-    form: this.form$,
-    keys: this.keys$,
-  });
 
   onSubmit(form: FormGroup) {
     console.log(form.getRawValue());
   }
 
-  generateFirst$ = generate({
-    initialState: 1,
-    condition: (x) => x < 8,
-    iterate: (x) => x + 1,
-    resultSelector: () => 2,
-    scheduler: asyncScheduler,
-  });
+  onInputChange(control: string, form: FormGroup) {
+    console.log(form.get(control).value);
+    this.formService.setFormValue(control, form.get(control).value);
+  }
 
-  generateSecond$ = (r) =>
-    generate({
-      initialState: r % 2 === 0 ? 1 : 0,
-      condition: (x) => x < gameSize,
-      iterate: (x) => x + 2,
-    }).pipe(map((c) => createGameObject(r, c)));
+  // generateFirst$ = generate({
+  //   initialState: 1,
+  //   condition: (x) => x < 8,
+  //   iterate: (x) => x + 1,
+  //   resultSelector: () => 2,
+  //   scheduler: asyncScheduler,
+  // });
 
-  bricks$ = this.generateFirst$
-    .pipe(
-      mergeMap(this.generateSecond$)
-      // toArray()
-    )
-    .subscribe(console.log);
+  // generateSecond$ = (r) =>
+  //   generate({
+  //     initialState: r % 2 === 0 ? 1 : 0,
+  //     condition: (x) => x < gameSize,
+  //     iterate: (x) => x + 2,
+  //   }).pipe(map((c) => createGameObject(r, c)));
+
+  // bricks$ = this.generateFirst$.pipe(
+  //   mergeMap(this.generateSecond$)
+  //   // toArray()
+  // );
+  // .subscribe(console.log);
 }
