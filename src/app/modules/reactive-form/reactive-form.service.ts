@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, Subject, map, merge } from 'rxjs';
+import { Observable, Subject, map, merge, share } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 class ReactiveForm {
@@ -27,7 +27,7 @@ export class ReactiveFormService {
     }))
   );
 
-  form$: Observable<ReactiveForm> = merge(this.post$, this.setNewValue$);
+  form$: Observable<ReactiveForm> = merge(this.post$, this.setNewValue$).pipe(share());
 
   setFormValue(field: string, form: FormGroup, keys: string[]) {
     form.get(field).patchValue(form.get(field).value);
