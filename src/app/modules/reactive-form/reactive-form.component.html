@@ -1,11 +1,11 @@
-<ng-container *ngIf="(formService.formSub$ | async) as f; else loading">
+<ng-container *ngIf="(formService.form$ | async) as f; else loading">
   <form [formGroup]="f.form">
 
     <div>
       <ng-container *ngFor="let control of f.keys">
         <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>{{ control | titlecase}}</mat-label>
-          <input type="text" matInput formControlName="{{control}}" (input)="onInputChange(control, f.form)"/>
+          <input type="text" matInput formControlName="{{control}}" (input)="onInputChange(control, f.form, f.keys)"/>
         </mat-form-field>
       </ng-container>
     </div>

@@ -17,8 +17,8 @@ export class Form2Component implements OnInit {
     console.log(form.getRawValue());
   }
 
-  onInputChange(control: string, form: FormGroup) {
+  onInputChange(control: string, form: FormGroup, keys: string[]) {
     console.log(form.get(control).value);
-    this.formService.setFormValue(control, form.get(control).value);
+    this.formService.setFormValue(control, form, keys);
   }
 }

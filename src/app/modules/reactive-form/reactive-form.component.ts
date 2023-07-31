@@ -79,17 +79,16 @@ export class ReactiveFormComponent {
     // console.log(womenAndFromUnionCollege);
     // console.log(fromUnionCollegeAndWoman);
     // console.log(sameOnlyWithFilter);
-
-    formService.getPosts();
+    // formService.getPosts();
   }
 
   onSubmit(form: FormGroup) {
     console.log(form.getRawValue());
   }
 
-  onInputChange(control: string, form: FormGroup) {
+  onInputChange(control: string, form: FormGroup, keys: string[]) {
     console.log(form.get(control).value);
-    this.formService.setFormValue(control, form.get(control).value);
+    this.formService.setFormValue(control, form, keys);
   }
 
   // generateFirst$ = generate({
