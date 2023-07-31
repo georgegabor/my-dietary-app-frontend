@@ -87,7 +87,7 @@ export class ReactiveFormComponent {
   }
 
   onInputChange(control: string, form: FormGroup, keys: string[]) {
-    console.log(form.get(control).value);
+    // console.log(form.get(control).value);
     this.formService.setFormValue(control, form, keys);
   }
 

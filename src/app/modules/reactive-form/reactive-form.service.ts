@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, Subject, map, merge, share } from 'rxjs';
+import { Observable, Subject, concat, map, merge, share, tap } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 class ReactiveForm {
@@ -37,4 +37,12 @@ export class ReactiveFormService {
       keys: keys,
     });
   }
+
+  concat$ = concat(
+    this.post$.pipe(tap((v) => console.log('post$'))),
+    this.setNewValue$.pipe(tap((v) => console.log('setNewValue$')))
+  ).subscribe((v) => {
+    console.log('Concat...');
+    console.log(v);
+  });
 }
