@@ -1,31 +1,182 @@
-.sidenav-container {
-  height: 100%;
- background-color: whitesmoke;
-}
+// .sidenav-container {
+//   height: 100%;
+//  background-color: whitesmoke;
+// }
 
-mat-sidenav {
-  background-color: black;
-  border: none;
-  width: 10rem;
-}
+// mat-sidenav {
+//   background-color: black;
+//   border: none;
+//   width: 10rem;
+// }
 
-mat-toolbar {
-  background-color: lightslategray;
-  border: none;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+// mat-toolbar {
+//   background-color: lightslategray;
+//   border: none;
+//   position: sticky;
+//   top: 0;
+//   z-index: 10;
+// }
 
-.mat-nav-list .mat-list-item {
-  color: white;
-}
+// .mat-nav-list .mat-list-item {
+//   color: white;
+// }
 
 .active {
-  background: gray !important;
+  filter: brightness(150%);
 }
 
-.content {
-  margin: 2%;
-  background-color: white;
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: minmax(5rem, 5rem) auto minmax(5rem, 5rem);
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  header {
+    grid-area: header;
+    background-color: rgba(22, 22, 22, 0.9);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  main {
+    grid-area: main;
+
+    h2,
+    .content {
+      margin: 1rem;
+      padding: 1rem;
+    }
+
+    h2 {
+      color: #dddddd;
+    }
+
+    .content {
+      background-color: white;
+    }
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: rgba(22, 22, 22, 0.9);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.linear-gradient {
+  background: linear-gradient(to top left, rgb(50, 50, 50), gray);
+}
+
+.carbon-fibre {
+  color: white;
+  background: radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px;
+}
+
+.upholstery {
+  color: white;
+
+  background: radial-gradient(
+        hsl(0, 100%, 27%) 4%,
+        hsl(0, 100%, 18%) 9%,
+        hsla(0, 100%, 20%, 0) 9%
+      )
+      0 0,
+    radial-gradient(
+        hsl(0, 100%, 27%) 4%,
+        hsl(0, 100%, 18%) 8%,
+        hsla(0, 100%, 20%, 0) 10%
+      )
+      50px 50px,
+    radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+    radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+    radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+    radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px
+      50px,
+    radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+    radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+    linear-gradient(
+        45deg,
+        hsla(0, 100%, 20%, 0) 49%,
+        hsla(0, 100%, 0%, 1) 50%,
+        hsla(0, 100%, 20%, 0) 70%
+      )
+      0 0,
+    linear-gradient(
+        -45deg,
+        hsla(0, 100%, 20%, 0) 49%,
+        hsla(0, 100%, 0%, 1) 50%,
+        hsla(0, 100%, 20%, 0) 70%
+      )
+      0 0;
+  background-color: #300;
+  background-size: 100px 100px;
+}
+
+.argyle {
+  color: white;
+  background-color: #6d695c;
+  background-image: repeating-linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    linear-gradient(
+      60deg,
+      rgba(0, 0, 0, 0.1) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      120deg,
+      rgba(0, 0, 0, 0.1) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.1)
+    );
+  background-size: 70px 120px;
+}
+
+.stars {
+  color: red;
+  background: linear-gradient(324deg, #232927 4%, transparent 4%) -70px 43px,
+    linear-gradient(36deg, #232927 4%, transparent 4%) 30px 43px,
+    linear-gradient(72deg, #e3d7bf 8.5%, transparent 8.5%) 30px 43px,
+    linear-gradient(288deg, #e3d7bf 8.5%, transparent 8.5%) -70px 43px,
+    linear-gradient(216deg, #e3d7bf 7.5%, transparent 7.5%) -70px 23px,
+    linear-gradient(144deg, #e3d7bf 7.5%, transparent 7.5%) 30px 23px,
+    linear-gradient(324deg, #232927 4%, transparent 4%) -20px 93px,
+    linear-gradient(36deg, #232927 4%, transparent 4%) 80px 93px,
+    linear-gradient(72deg, #e3d7bf 8.5%, transparent 8.5%) 80px 93px,
+    linear-gradient(288deg, #e3d7bf 8.5%, transparent 8.5%) -20px 93px,
+    linear-gradient(216deg, #e3d7bf 7.5%, transparent 7.5%) -20px 73px,
+    linear-gradient(144deg, #e3d7bf 7.5%, transparent 7.5%) 80px 73px;
+  background-color: #232927;
+  background-size: 100px 100px;
 }

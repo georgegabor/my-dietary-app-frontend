@@ -1,57 +1,31 @@
-<header>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button
-        matTooltip="{{ sidenav.opened ? 'Close Sidebar' : 'Opwn Sidebar' }}" (click)="sidenav.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+<div class="wrapper">
+  <header class="carbon-fibre">
+      <button mat-raised-button class="upholstery" routerLink="./dashboard" routerLinkActive="active">Dashboard</button>
+      <button mat-raised-button class="upholstery" routerLink="./events" routerLinkActive="active">Event</button>
+      <button mat-raised-button class="upholstery" routerLink="./reactive-form" routerLinkActive="active">Reactive
+        form</button>
+      <button mat-raised-button class="upholstery" routerLink="./reactive-component" routerLinkActive="active">Reactive component</button>
+      <button mat-raised-button class="upholstery" routerLink="./food" routerLinkActive="active">Food</button>
+      <button mat-raised-button class="upholstery" routerLink="./table" routerLinkActive="active">Table</button>
+      <button mat-raised-button class="upholstery" routerLink="./playground" routerLinkActive="active">Playground</button>
+      <button mat-raised-button class="upholstery" routerLink="./facade" routerLinkActive="active">Facade</button>
+      <button mat-raised-button class="upholstery" routerLink="./ngZone" routerLinkActive="active">ngZone</button>
+      <button mat-raised-button class="upholstery" routerLink="./nostro" routerLinkActive="active">Nostro</button>
+      <button mat-raised-button class="upholstery" routerLink="./memory" routerLinkActive="active">Memory</button>
+      <button mat-raised-button class="upholstery" routerLink="./simpleTable" routerLinkActive="active">Simple
+        Table</button>
+      <button mat-raised-button class="upholstery" routerLink="./statepattern" routerLinkActive="active">State
+        Pattern</button>
+  </header>
 
-      <div fxFlex fxLayout fxLayoutAlign="center">
-        <h3>App</h3>
-      </div>
-
-      <div fxLayoutAlign="start center">
-        <div fxLayout fxLayoutGap="20px">
-          <button mat-icon-button>
-            <mat-icon matTooltip="Home"> home </mat-icon>
-          </button>
-        </div>
-
-        <div fxLayout fxLayoutGap="20px">
-          <button mat-icon-button>
-            <mat-icon matTooltip="User"> face </mat-icon>
-          </button>
-        </div>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</header>
-
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened role="navigation" #sidenav>
-    <mat-nav-list>
-      <mat-list-item routerLink="./dashboard" routerLinkActive="active">Dashboard</mat-list-item>
-      <mat-list-item routerLink="./events" routerLinkActive="active">Event</mat-list-item>
-      <mat-list-item routerLink="./reactive-form" routerLinkActive="active">Reactive
-        form</mat-list-item>
-      <mat-list-item routerLink="./reactive-component" routerLinkActive="active">Reactive component</mat-list-item>
-      <mat-list-item routerLink="./food" routerLinkActive="active">Food</mat-list-item>
-      <mat-list-item routerLink="./table" routerLinkActive="active">Table</mat-list-item>
-      <mat-list-item routerLink="./playground" routerLinkActive="active">Playground</mat-list-item>
-      <mat-list-item routerLink="./facade" routerLinkActive="active">Facade</mat-list-item>
-      <mat-list-item routerLink="./ngZone" routerLinkActive="active">ngZone</mat-list-item>
-      <mat-list-item routerLink="./nostro" routerLinkActive="active">Nostro</mat-list-item>
-      <mat-list-item routerLink="./memory" routerLinkActive="active">Memory</mat-list-item>
-      <mat-list-item routerLink="./simpleTable" routerLinkActive="active">Simple
-        Table</mat-list-item>
-      <mat-list-item routerLink="./statepattern" routerLinkActive="active">State
-        Pattern</mat-list-item>
-
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
+  <main class="linear-gradient">
+    <h2>Page Title</h2>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </main>
+
+  <footer class="carbon-fibre">
+    footer@com
+  </footer>
+</div>
