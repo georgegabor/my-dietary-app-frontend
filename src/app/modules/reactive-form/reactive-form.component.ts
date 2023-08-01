@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ReactiveFormService } from './reactive-form.service';
 
 export const gameSize = 5;
@@ -74,7 +74,7 @@ const sameOnlyWithFilter = students.filter(isWoman).filter(isFromUnionCollege);
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReactiveFormComponent {
-  constructor(private fb: FormBuilder, public formService: ReactiveFormService) {
+  constructor(public formService: ReactiveFormService) {
     // console.log(result);
     // console.log(womenAndFromUnionCollege);
     // console.log(fromUnionCollegeAndWoman);
@@ -87,7 +87,6 @@ export class ReactiveFormComponent {
   }
 
   onInputChange(control: string, form: FormGroup, keys: string[]) {
-    // console.log(form.get(control).value);
     this.formService.setFormValue(control, form, keys);
   }
 

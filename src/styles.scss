@@ -296,22 +296,15 @@ mat-label {
 }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: unset;
-  /*
-  position: relative; */
-  /* bottom: 0.5em; */
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
   align-items: center;
+  color: blue;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-prefix,
 .mat-form-field-appearance-outline .mat-form-field-suffix {
   top: 0.4em !important;
-}
-
-.mat-form-field-infix {
-  padding-top: 1.2% !important;
-  padding-bottom: 5% !important;
-  display: flex !important;
 }
 
 mat-form-field.table-form-field {

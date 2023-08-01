@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ReactiveFormService } from '../reactive-form/reactive-form.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ReactiveFormService } from '../reactive-form/reactive-form.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Form2Component implements OnInit {
-  constructor(private fb: FormBuilder, public formService: ReactiveFormService) {}
+  constructor(public formService: ReactiveFormService) {}
 
   ngOnInit(): void {}
 
@@ -18,7 +18,6 @@ export class Form2Component implements OnInit {
   }
 
   onInputChange(control: string, form: FormGroup, keys: string[]) {
-    console.log(form.get(control).value);
     this.formService.setFormValue(control, form, keys);
   }
 }
